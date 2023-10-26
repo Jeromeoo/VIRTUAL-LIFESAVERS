@@ -424,3 +424,91 @@ nav {
     background-color: var(--clr-primary-color);
 }
 
+.contact-section{
+    font-size: 70px;
+    text-align: center;
+}
+
+.contact-section span{
+    color:#820000;
+}
+
+
+.contact-main-section{
+    height: 100vh;
+
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(images/about-bgimg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: lighten;
+}
+
+.contact-second-section{
+    display: flex;
+    align-items: center;
+    height: 300px;
+justify-content:center;
+padding-top: 20px;
+    
+}
+
+.Address h1{
+text-align: center;
+font-size: 50px;
+}
+
+.Address p{
+text-align: center;
+font-size: 20px;
+}
+
+.contact-third-section{
+display: flex;
+align-items: center;
+height: 300px;
+justify-content:center;
+padding-top: 20px;
+
+}
+
+.phone-number h1{
+text-align: center;
+font-size: 50px;
+}
+
+.phone-number p{
+text-align: center;
+font-size: 20px;
+}
+
+.contact-fourth-section{
+display: flex;
+align-items: center;
+height: 300px;
+justify-content:center;
+padding-top: 20px;
+
+}
+
+.email-add h1 {
+text-align: center;
+font-size: 50px;
+}
+
+.email-add p {
+text-align: center;
+font-size: 20px;
+}
+
+.whole-bottom-section{
+    background-image: url(images/contact-second-pic.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
