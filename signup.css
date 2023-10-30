@@ -128,6 +128,10 @@ body{
   align-items: center;
   justify-content: center;
   background: white;
+  background-image: url(images/sign-bg-image.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .wrapper{
   position: relative;
