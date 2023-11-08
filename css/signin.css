@@ -106,96 +106,125 @@ nav {
     color: white;
     background-color: var(--clr-primary-color);
 }
-* {
+
+/* Sign in CSS*/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter';
+    font-family: 'Poppins', sans-serif;
 }
 
-label {
-    display: block;
-}
-
-label {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.wrapper {
-    background-color: white;
+body {
+    min-height: 140vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 120vh;  
+    background: white;
+    background-image: url(images/sign-bg-image.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-form {
-    border: 5px solid rgba(72, 0, 0, 0.80);
-    border-radius: 20px;
-    min-width: 580px;
-    min-height: 600px;
-    background-color: white;
-    padding: 20px;
-}
-
-.back-arrow {
-    width: 39px;
-    height: 39px;
-    border-style: none;
-    border-radius: 50%;
-    background-color: #952323;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.fa-arrow-left {
-    color: white;
-}
-
-.signin-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-}
-
-input {
+.wrapper {
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    background: #fff;
+    padding: 34px;
     border-radius: 6px;
-    background-color: rgb(247, 242, 242);
-    width: 336px;
-    height: 35px;
-    border-color: #952323;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    border: 5px solid rgba(72, 0, 0, 0.80);
 }
 
-h1 {
-    color: #2C2C2C;
-    font-size: 35px;
-    font-weight: 800;
+.wrapper h2 {
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
 }
 
-h3, a {
-    font-size: 16px;
+.wrapper h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 28px;
+    border-radius: 12px;
 }
 
-.forgor {
-    color: #2C2C2C;
-    display: block;
-    margin-top: 10px;
-    font-size: 12px;
+.wrapper form {
+    margin-top: 30px;
 }
 
-.signIn-btn {
-    border-style: none;
-    border-radius: 10px;
-    min-width: 179px;
-    min-height: 52px;
+.wrapper form .input-box {
+    height: 52px;
+    margin: 18px 0;
+}
+
+form .input-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+     border: 1.5px solid #C7BEBE;
+    border-bottom-width: 2.5px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+.input-box input:focus,
+.input-box input:valid{
+  border-color: rgb(133, 46, 46);
+}
+form .forgor {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: rgb(133, 46, 46);
+    text-decoration: none;
+}
+form .forgor:hover{
+    text-decoration: underline;
+}
+
+form h4 {
+    color: #707070;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+.input-box.button input{
     color: white;
-    background-color: #F02020;
+    letter-spacing: 1px;
+    border: none;
+    background: rgb(133, 46, 46);
     cursor: pointer;
-}
+  }
+  .input-box.button input:hover {
+    background: rgb(184, 3, 3);
+  }
+  form .text h4{
+   color: #333;
+   width: 90%;
+   text-align: center;
+  }
+  form .text h4 a {
+    color: rgb(133, 46, 46);
+    text-decoration: none;
+  }
+  form .text h4 a:hover{
+    text-decoration: underline;
+  }
 
-.signup-here {
-    color: #F02020;
-}
+
+
+
+
