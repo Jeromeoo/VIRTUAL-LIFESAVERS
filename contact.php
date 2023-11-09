@@ -16,7 +16,7 @@
 <body>
 
     <header class="site-header">
-
+  
         <div class="announcement">
 
             <img src="css/images/Announcement-Logo.jpg" alt="">
@@ -32,11 +32,11 @@
             <img src="css/images/Logo.png" alt="">
 
             <ul class="nav_list">
-              <li class="nav_list-item"><a href="index.html" class="nav_link">HOME</a></li>
-              <li class="nav_list-item"><a href="about.html" class="nav_link">ABOUT</a></li>
-              <li class="nav_list-item"><a href="contact.html" class="nav_link">CONTACT</a></li>
-              <li class="nav_list-item"><a href="signin.html" class="nav_link">SIGN IN</a></li>
-              <li class="nav_list-item"><a href="signup.html" class="nav_link">SIGN UP</a></li>
+            <li class="nav_list-item"><a href="homepage.php" class="nav_link">HOME</a></li>
+            <li class="nav_list-item"><a href="about.php" class="nav_link">ABOUT</a></li>
+            <li class="nav_list-item"><a href="contact.php" class="nav_link">CONTACT</a></li>
+            <li class="nav_list-item"><a href="index.php" class="nav_link">SIGN IN</a></li>
+            <li class="nav_list-item"><a href="signup_process.php" class="nav_link">SIGN UP</a></li>
             </ul>
         </nav>
 

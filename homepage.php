@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 <body>
@@ -23,7 +23,7 @@
 
         <div class="announcement">
 
-            <img src="css/images/Announcement-Logo.jpg" alt="">
+            <img src="images/Announcement-Logo.jpg" alt="">
 
             <p>Online Blood Donation: Share, Save, Support</p>
 
@@ -33,14 +33,14 @@
 
         <nav class="nav">
             
-            <img src="css/images/Logo.png" alt="">
+            <img src="images/Logo.png" alt="">
 
             <ul class="nav_list">
-                <li class="nav_list-item"><a href="index.html" class="nav_link">HOME</a></li>
-                <li class="nav_list-item"><a href="about.html" class="nav_link">ABOUT</a></li>
-                <li class="nav_list-item"><a href="contact.html" class="nav_link">CONTACT</a></li>
-                <li class="nav_list-item"><a href="signin.html" class="nav_link">SIGN IN</a></li>
-                <li class="nav_list-item"><a href="signup.html" class="nav_link">SIGN UP</a></li>
+            <li class="nav_list-item"><a href="homepage.php" class="nav_link">HOME</a></li>
+            <li class="nav_list-item"><a href="about.php" class="nav_link">ABOUT</a></li>
+            <li class="nav_list-item"><a href="contact.php" class="nav_link">CONTACT</a></li>
+            <li class="nav_list-item"><a href="index.php" class="nav_link">SIGN IN</a></li>
+            <li class="nav_list-item"><a href="signup_process.php" class="nav_link">SIGN UP</a></li>
             </ul>
         </nav>
         <section class="main-section">
@@ -67,7 +67,7 @@
           
             <div class="second-content">
              
-              <img src="css/images/second-content.png" alt="">
+              <img src="images/second-content.png" alt="">
             </div>
           
           
