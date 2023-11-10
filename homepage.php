@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>

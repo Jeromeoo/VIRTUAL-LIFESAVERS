@@ -72,3 +72,33 @@ if (isset($_POST['submit'])) {
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up | Virtual Lifesaver</title> 
+    <link rel="stylesheet" href="css/signup.css">
+   </head>
+   <body>
+   <header class="site-header">
+    <div class="announcement">
+        <img src="images/Announcement-Logo.jpg" alt="">
+        <p>Online Blood Donation: Share, Save, Support</p>
+        <p></p>
+    </div>
+    <nav class="nav">
+        <img src="images/Logo.png" alt="">
+        <ul class="nav_list">
+        <li class="nav_list-item"><a href="homepage.php" class="nav_link">HOME</a></li>
+            <li class="nav_list-item"><a href="about.php" class="nav_link">ABOUT</a></li>
+            <li class="nav_list-item"><a href="contact.php" class="nav_link">CONTACT</a></li>
+            <li class="nav_list-item"><a href="index.php" class="nav_link">SIGN IN</a></li>
+            <li class="nav_list-item"><a href="signup_process.php" class="nav_link">SIGN UP</a></li>
+        </ul>
+    </nav>
+  </header>
+    </form>
+  </div>
+</body>
+</html>
