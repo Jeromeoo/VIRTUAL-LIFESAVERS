@@ -79,7 +79,8 @@
             
                 <div class="donate-btn">
             
-                    <button>DONATE BLOOD NOW</button>
+                    <button>DONATE BLOOD NOW</button> <br>
+                    <button>REQUEST BLOOD NOW</button>
                 </div>
                
                 
