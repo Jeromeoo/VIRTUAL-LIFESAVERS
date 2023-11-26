@@ -23,7 +23,7 @@
 
         <div class="announcement">
 
-            <img src="images/Announcement-Logo.jpg" alt="">
+            <img src="css/images/Announcement-Logo.jpg" alt="">
 
             <p>Online Blood Donation: Share, Save, Support</p>
 
@@ -33,7 +33,7 @@
 
         <nav class="nav">
             
-            <img src="images/Logo.png" alt="">
+            <img src="css/images/Logo.png" alt="">
 
             <ul class="nav_list">
             <li class="nav_list-item"><a href="homepage.php" class="nav_link">HOME</a></li>

@@ -78,9 +78,6 @@ if (isset($_POST["Submit"])) {
         <input type="text" placeholder="Enter your email" name="email" required>
       </div>
       <div class="input-box">
-        <input type="text" placeholder="Enter your username">
-      </div>
-      <div class="input-box">
         <input type="password" placeholder="Create password" name="password" required>
       </div>
       <div class="input-box">
