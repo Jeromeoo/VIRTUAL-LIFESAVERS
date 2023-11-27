@@ -122,9 +122,13 @@ nav {
     justify-content: space-between;
 
 }
+.donate-btn {
+    display: flex;
+    flex-direction: column;
+}
 
 
-.donate-btn button {
+.donate-btn a {
     margin-top: 16px;
     outline: none;
     border: none;
@@ -134,16 +138,17 @@ nav {
     font-family: 'Vollkorn', serif;
     font-size: 18px;
     font-weight: var(--fw-bold);
-
     background-color: var(--clr-primary-color);
     cursor: pointer;
+    text-decoration: none;
 }
 
-.donate-btn button:hover{
+
+.donate-btn a:hover{
     opacity: 0.8;
   }
   
-.donate-btn button:active{
+.donate-btn a:active{
     opacity: 0.5;
   }
 
