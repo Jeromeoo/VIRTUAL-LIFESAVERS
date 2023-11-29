@@ -39,47 +39,15 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password | Virtual Lifesaver</title>
-    <link rel="stylesheet" type="text/css" href="signup.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/signup.css">
+    <title>Forgot Password?</title>
 </head>
-<body>
-    <div class="wrapper">
-        <form action="forgot.php" method="post">
-            <h1>Forgot Password</h1>
-            <div class="input-box">
-                <input type="text" name="email" placeholder="Enter your email" required>
-                <i class='bx bx-user'></i>
-            </div>
-            <div class="input-box">
-                <input type="password" name="new_password" placeholder="New Password">
-                <i class='bx bxs-lock-alt'></i>
-            </div>
-            <div class="input-box">
-                <input type="password" name="confirm_password" placeholder="Confirm Password">
-                <i class='bx bxs-lock-alt'></i>
-            </div>
-            <button type="submit" class="btn" name="submit">Submit</button>
-        </form>
-    
-        <div id="success-message" style="display: none; color: green;">Password Successfully changed!</div>
-    </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up | Virtual Lifesaver</title> 
-    <link rel="stylesheet" href="css/signup.css">
-   </head>
    <body>
    <header class="site-header">
     <div class="announcement">
@@ -98,7 +66,32 @@ if (isset($_POST['submit'])) {
         </ul>
     </nav>
   </header>
-    </form>
   </div>
+  <div class="wrapper">
+        <form action="forgot.php" method="post">
+            <h2>Forgot Password?</h2>
+            <div class="input-box">
+                <input type="text" name="email" placeholder="Enter your email" required>
+                <i class='bx bx-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="new_password" placeholder="New Password">
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="confirm_password" placeholder="Confirm Password">
+                <i class='bx bxs-lock-alt'></i>
+</div>
+
+            <div class="input-box button">
+        <input type="submit" name="Submit" value="Submit">
+        </div>
+           
+    
+        <div id="success-message" style="display: none; color: green;">Password Successfully changed!</div>
+    </div>
+</form>
+
 </body>
 </html>
+

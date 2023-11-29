@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Virtual Lifesaver | Blood Donation</title>
 
 
 
@@ -56,8 +56,8 @@
           
               <div class="donate-btn">
           
-              <a href="bdform.html">DONATE BLOOD NOW</a>
-            <a href="requestform.html">REQUEST BLOOD NOW</a>
+            <a href="bdform.html">DONATE BLOOD NOW</a>
+             <a href="requestform.html">REQUEST BLOOD NOW</a>
               </div>
           
            
@@ -70,6 +70,7 @@
              
               <img src="css/images/second-content.png" alt="">
             </div>
+            
           
           
 
