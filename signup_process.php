@@ -72,20 +72,25 @@ if (isset($_POST["Submit"])) {
     <h2>Sign Up</h2>
     <form action="signup_process.php" method="post">
       <div class="input-box">
+        <label for="fullname">Fullname:</label> 
         <input type="text" placeholder="Enter your name" name="fname" required>
-      </div>
+      </div> <br>
       <div class="input-box">
+      <label for="fullname">Email:</label> 
         <input type="text" placeholder="Enter your email" name="email" required>
-      </div>
+      </div> <br>
       <div class="input-box">
+      <label for="fullname">Password:</label> 
         <input type="password" placeholder="Create password" name="password" required>
-      </div>
+      </div> <br>
       <div class="input-box">
+      <label for="fullname">Retype your password:</label> 
         <input type="password" placeholder="Confirm password" name="cpassword" required>
-      </div>
+      </div> <br>
       <div class="input-box">
+        <label for="birthday">Birthdate:</label>
         <input type="date" placeholder="Enter birth date" name="birth_date" required>
-      </div>
+      </div> <br>
       <div class="policy">
         <input type="checkbox">
         <h3>Remember me</h3>
