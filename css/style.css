@@ -37,6 +37,7 @@ body {
     font-family: 'Vollkorn', serif;
     font-size: 	16px;
     line-height: 1.5;
+    background-image: url(images/halftone.png);
     
 
 
@@ -122,9 +123,13 @@ nav {
     justify-content: space-between;
 
 }
+.donate-btn {
+    display: flex;
+    flex-direction: column;
+}
 
 
-.donate-btn button {
+.donate-btn a {
     margin-top: 16px;
     outline: none;
     border: none;
@@ -134,10 +139,19 @@ nav {
     font-family: 'Vollkorn', serif;
     font-size: 18px;
     font-weight: var(--fw-bold);
-
     background-color: var(--clr-primary-color);
     cursor: pointer;
+    text-decoration: none;
 }
+
+
+.donate-btn a:hover{
+    opacity: 0.8;
+  }
+  
+.donate-btn a:active{
+    opacity: 0.5;
+  }
 
 
 
@@ -416,3 +430,11 @@ font-size: 20px;
     background-size: cover;
 }
 
+/** footer**/
+
+footer .footer-container{
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    height: 60%;
+}

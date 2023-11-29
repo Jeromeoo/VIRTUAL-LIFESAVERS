@@ -77,11 +77,21 @@
                     register as blood donors. <br>
                     </p>
             
-                <div class="donate-btn">
-            
-                    <button>DONATE BLOOD NOW</button>
-                </div>
-               
+                    <button onclick="redirectToBDForm()">DONATE BLOOD NOW</button> <br>
+                    <button onclick="redirectToRequestForm()">REQUEST BLOOD NOW</button>
+
+                    <script>
+                    function redirectToBDForm() {
+                     // Redirect the user to BDform.php
+                     window.location.href = 'BDform.php';
+                     }     
+
+                     function redirectToRequestForm() {
+                      // Redirect the user to another form (replace 'RequestForm.php' with the actual file name)
+                      window.location.href = 'requestForm.php';
+                     }
+                    </script>
+
                 
       
        
