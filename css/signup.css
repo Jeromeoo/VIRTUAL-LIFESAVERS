@@ -34,8 +34,8 @@ html {
 body {
 
     margin: 0 auto;
-    height: 120vh;
-    font-family: 'Vollkorn', serif;
+    height: 100vh;
+    font-family: 'Vollkorn', sans-serif;
     font-size: 	16px;
     line-height: 1.5;
 
@@ -123,7 +123,7 @@ nav {
   font-family: 'Vollkorn', sans-serif;
 }
 body{
-  min-height: 150vh;
+  min-height: 120vh;
   display: flex;
   align-items: center;
   justify-content: center;
