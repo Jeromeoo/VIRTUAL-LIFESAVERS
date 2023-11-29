@@ -93,7 +93,7 @@ if (isset($_POST["Submit"])) {
       </div> <br>
       <div class="policy">
         <input type="checkbox">
-        <a href="condition.html">Accept Terms and Codition</a>
+        <h3>Remember me</h3>
       </div>
       <div class="input-box button">
         <input type="submit" name="Submit" value="Register Now">
@@ -105,4 +105,3 @@ if (isset($_POST["Submit"])) {
   </div>
 </body>
 </html>
-

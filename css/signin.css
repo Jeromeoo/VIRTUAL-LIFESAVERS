@@ -223,15 +223,7 @@ form h4 {
     text-decoration: underline;
   }
 
-.input-box button input{
-    color: white;
-    letter-spacing: 1px;
-    border: none;
-    background: rgb(133, 46, 46);
-    cursor: pointer;
-}
 
-.input-box button input:hover{
-    background: rgb(184, 3, 3);
-}
+
+
 
