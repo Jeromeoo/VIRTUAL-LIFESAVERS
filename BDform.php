@@ -33,7 +33,10 @@ function processForm() {
         $temperature = $_POST['temp'];
         $donatedPreviously = isset($_POST['yes-or-no']) && $_POST['yes-or-no'] == 'Yes';
         $lastDonationDate = $donatedPreviously ? $_POST['donate-blood'] : null;
+        $donationDay = $_POST['day'];
+        $donationTime = $_POST['time'];
 
+        
         // Validate and sanitize the data (add your validation logic here)
 
         // Your SQL query to insert data into the database
@@ -68,9 +71,11 @@ processForm();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Donation Form | Virtual Lifesaver</title>
     <link rel="stylesheet" href="css/bdform.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <section class="container">
+    <a href="homepage2.php" ><i class="fa-solid fa-arrow-left"></i></a>
         <h2>Blood Donation Form</h2>
         <form action="" method="post" class="form">
             What is your blood type? <br>
@@ -142,7 +147,7 @@ processForm();
                 <input type="text" placeholder="" name="barangay" required>
             </div>
             <div class="input-box">
-                <label>Zipcode</label>
+                <label>Zip code</label>
                 <input type="text" placeholder="" name="zipcode" required>
             </div>
             </div>

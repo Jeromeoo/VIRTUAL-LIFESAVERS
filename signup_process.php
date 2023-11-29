@@ -92,10 +92,7 @@ if (isset($_POST["Submit"])) {
         <label for="birthday">Birthdate:</label>
         <input type="date" placeholder="Enter birth date" name="birth_date" required>
       </div> <br>
-      <div class="policy">
-        <input type="checkbox">
-        <h3>Remember me</h3>
-      </div>
+      
       <div class="input-box button">
         <input type="submit" name="Submit" value="Register Now">
       </div>
