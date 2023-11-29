@@ -184,14 +184,14 @@ form .input-box input{
 .input-box input:valid{
   border-color: rgb(133, 46, 46);
 }
-form .forgor {
+form .forgot {
     font-size: 14px;
     display: flex;
     align-items: center;
     color: rgb(133, 46, 46);
     text-decoration: none;
 }
-form .forgor:hover{
+form .forgot:hover{
     text-decoration: underline;
 }
 
@@ -224,7 +224,15 @@ form h4 {
     text-decoration: underline;
   }
 
+.input-box button input{
+    color: white;
+    letter-spacing: 1px;
+    border: none;
+    background: rgb(133, 46, 46);
+    cursor: pointer;
+}
 
-
-
+.input-box button input:hover{
+    background: rgb(184, 3, 3);
+}
 
