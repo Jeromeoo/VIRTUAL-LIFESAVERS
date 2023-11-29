@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 </head>
 <header class="site-header">
     <div class="announcement">
-        <img src="images/Announcement-Logo.jpg" alt="">
+        <img src="css/images/Announcement-Logo.jpg" alt="">
         <p>Online Blood Donation: Share, Save, Support</p>
         <p></p>
     </div>
