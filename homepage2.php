@@ -6,12 +6,9 @@
     <title>Homepage2</title>
 
 
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Vollkorn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
 
@@ -69,7 +66,6 @@
               <div class="donate-btn2">
           
                   <a href="BDform.php">DONATE BLOOD NOW</a> 
-                  <br>
                   <a href="requestform.php">REQUEST BLOOD NOW</a>
               </div>
           
