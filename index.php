@@ -40,8 +40,9 @@ if (isset($_POST['submit'])) {
     <title>Sign in | Virtual Lifesaver</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/3c229b15a8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    
 </head>
 <header class="site-header">
     <div class="announcement">
