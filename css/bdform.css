@@ -14,7 +14,11 @@ body {
     align-items: center;
     justify-content: center;
     background: rgb(red, green, blue);
-    background-image: url(images/halftone.png);
+    background-image: url(images/about-bgimg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    background-size: cover;
 }
 
 
@@ -118,12 +122,30 @@ body {
 
 }
 .submit-button {
+    margin-top: 16px;
     outline: none;
     border: none;
+    border-radius: 8px;
     padding: 12px 24px;
+    color: var(--clr-light);
+    font-family: 'Vollkorn', serif;
+    font-size: 18px;
+    font-weight: var(--fw-bold);
+    background-color: var(--clr-primary-color);
     cursor: pointer;
-    
+    text-decoration: none;
+    background-color:  #A50000;
+    color:white;
 }
+
+.submit-button:hover{
+    opacity: 0.8;
+}
+
+.submit-button:active{
+    opacity: 0.5;
+}
+
 .submit-container {
     align-items: center;
     display: flex;
@@ -152,3 +174,13 @@ body {
     }
 }
     
+.pfday {
+    height: 30px;
+    font-size: 15px;
+
+}
+
+.pftime {
+    height: 30px;
+    font-size: 15px;
+}

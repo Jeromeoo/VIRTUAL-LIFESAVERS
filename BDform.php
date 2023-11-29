@@ -226,9 +226,33 @@ processForm();
                 <input type="date" name="donate-blood" required>
             </div>
         </div>
+        <BR>
+        <label for="day">Select day to donate:</label>
+              <select id="day" name="day" class="pfday">
+              <option value="mon">Monday</option>
+              <option value="tues">Tuesday</option>
+              <option value="wed">Wednesday</option>
+              <option value="thurs">Thursday</option>
+              <option value="fri">Friday</option>
+              <option value="sat">Saturday</option>
+              <option value="sun">Sunday</option>
+              </select>
+              <br>
+              <br>
+            <form action="" method="">
+              <label for="time">Select time to donate:</label>
+              <select id="time" name="time" class="pftime">
+              <option value="">9:00 AM - 10:30 AM</option>
+              <option value="">10:30 AM - 12:00 PM</option>
+              <option value="">12:00 PM - 1:30 PM</option>
+              <option value="">1:30 PM - 3:00 PM</option>
+              <option value="">3:00 PM - 4:30 PM</option>
+            </select>
         <div class="submit-container">
              <button name="submit" class="submit-button" type="submit"><span>Submit</span></button>
         </div>
+
+        
         </form>
     </section>
 
