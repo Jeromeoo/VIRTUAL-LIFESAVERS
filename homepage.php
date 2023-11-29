@@ -56,7 +56,7 @@
           
               <div class="donate-btn">
           
-                  <button>DONATE BLOOD NOW</button>
+                  <a href="BDform.php">DONATE BLOOD NOW</a>
               </div>
           
            
