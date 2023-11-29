@@ -115,15 +115,15 @@ nav {
 
 
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Vollkorn', sans-serif;
 }
 body{
-  min-height: 100vh;
+  min-height: 150vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,6 +186,12 @@ form .input-box input{
 form .policy{
   display: flex;
   align-items: center;
+}
+form .policy a{
+  color: #707070;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
 }
 form h3{
   color: #707070;

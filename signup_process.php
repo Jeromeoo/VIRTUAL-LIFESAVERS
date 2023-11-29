@@ -93,13 +93,13 @@ if (isset($_POST["Submit"])) {
       </div> <br>
       <div class="policy">
         <input type="checkbox">
-        <h3>Accept Terms & Condition</h3>
+        <a href="condition.html">Accept Terms and Codition</a>
       </div>
       <div class="input-box button">
         <input type="submit" name="Submit" value="Register Now">
       </div>
       <div class="text">
-        <h3>Already have an account? <a href="signin.html">Login now</a></h3>
+        <h3>Already have an account? <a href="index.php">Login now</a></h3>
       </div>
     </form>
   </div>
