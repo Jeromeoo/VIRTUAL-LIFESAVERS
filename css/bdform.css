@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 *{
@@ -13,7 +14,9 @@ body {
     align-items: center;
     justify-content: center;
     background: rgb(red, green, blue);
+    background-image: url(images/halftone.png);
 }
+
 
 .container {
     position: relative;
@@ -25,7 +28,7 @@ body {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-.container header{
+.container h2{
     font-size: 1.5rem;
     color: #333;
     font-weight: 500;
@@ -118,6 +121,7 @@ body {
     outline: none;
     border: none;
     padding: 12px 24px;
+    cursor: pointer;
     
 }
 .submit-container {

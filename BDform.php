@@ -66,12 +66,12 @@ processForm();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blood Donation Form | Virtual Lifesaver</title>
     <link rel="stylesheet" href="css/bdform.css">
 </head>
 <body>
     <section class="container">
-        <header>Blood Donation Form</header>
+        <h2>Blood Donation Form</h2>
         <form action="" method="post" class="form">
             What is your blood type? <br>
             <div class="blood-type-container">               
@@ -231,5 +231,7 @@ processForm();
         </div>
         </form>
     </section>
+
+    
 </body>
 </html>
