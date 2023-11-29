@@ -77,11 +77,12 @@
                     register as blood donors. <br>
                     </p>
             
-                <div class="donate-btn">
-            
-                    <a href="BDform.php">DONATE BLOOD NOW</a>
-                </div>
-               
+                    <div class="donate-btn">
+          
+          <a href="BDform.php">DONATE BLOOD NOW</a>
+              <a href="requestform.html">REQUEST BLOOD NOW</a>
+          </div>
+      
                 
       
        
