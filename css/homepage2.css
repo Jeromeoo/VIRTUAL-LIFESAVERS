@@ -38,11 +38,15 @@ body {
     font-size: 	16px;
     line-height: 1.5;
     
-
+    background-image: url(images/halftone.png);
 
 }
 
+.site-header2 {
 
+  transition: box-shadow 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out; 
+}
 header {
  
     position: fixed;
@@ -123,26 +127,27 @@ header {
 }
 
 
-.donate-btn2 button {
-    margin-top: 16px;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 24px;
-    color: var(--clr-light);
-    font-family: 'Vollkorn', serif;
-    font-size: 18px;
-    font-weight: var(--fw-bold);
-
-    background-color: var(--clr-primary-color);
-    cursor: pointer;
+.donate-btn2 a {
+  margin-top: 16px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  color: var(--clr-light);
+  font-family: 'Vollkorn', serif;
+  font-size: 18px;
+  font-weight: var(--fw-bold);
+  background-color: var(--clr-primary-color);
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.donate-btn2 button:hover{
+
+.donate-btn2 a:hover{
   opacity: 0.8;
 }
 
-.donate-btn2 button:active{
+.donate-btn2 a:active{
   opacity: 0.5;
 }
 
@@ -162,7 +167,7 @@ header {
 
 }
 
-.first-content span {
+.first-content2 span {
     font-size: 20px;
     color: #A50000;
 }
@@ -171,7 +176,7 @@ header {
   display: inline-block;
 }
 .dropdown button{
-  background-color: white;
+  background-color: transparent;
   color: black;
   padding: 0.5rem 1rem;
   border: none;
@@ -255,3 +260,8 @@ button:hover {
   min-height: 50px;
   background-color: #fff;
 }
+
+.span {
+  color:#820000;
+}
+
