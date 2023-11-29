@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About us | Virtual Lifesaver</title>
 
 
 
@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/about.css">
 
 </head>
 <body>
@@ -77,21 +77,11 @@
                     register as blood donors. <br>
                     </p>
             
-                    <button onclick="redirectToBDForm()">DONATE BLOOD NOW</button> <br>
-                    <button onclick="redirectToRequestForm()">REQUEST BLOOD NOW</button>
-
-                    <script>
-                    function redirectToBDForm() {
-                     // Redirect the user to BDform.php
-                     window.location.href = 'BDform.php';
-                     }     
-
-                     function redirectToRequestForm() {
-                      // Redirect the user to another form (replace 'RequestForm.php' with the actual file name)
-                      window.location.href = 'requestForm.php';
-                     }
-                    </script>
-
+                <div class="donate-btn">
+            
+                    <button>DONATE BLOOD NOW</button>
+                </div>
+               
                 
       
        

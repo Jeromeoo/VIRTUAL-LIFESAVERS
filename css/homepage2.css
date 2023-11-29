@@ -1,0 +1,209 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+:root{
+    
+    --clr-text: #2C2C2C;
+    --clr-accent: #212121;
+    --clr-light: #FFF;
+    --clr-dark: #000;
+
+    --clr-primary-color: #820000;
+
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+}
+
+
+html {
+    scroll-behavior: smooth scroll;
+}
+
+
+body {
+
+    margin: 0 auto;
+    height: 100vh;
+    font-family: 'Vollkorn', serif;
+    font-size: 	16px;
+    line-height: 1.5;
+    
+
+
+}
+
+
+header {
+ 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    /* box-shadow: 0 1px 6px 0 rgb(32 33 36 / 10%); */
+    
+    
+}
+
+
+.announcement2 {
+    background-color: var(--clr-primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+ 
+
+    padding: 0 6.25rem;
+}
+
+.announcement2 p {
+
+    font-size: 20px;
+    font-weight: var(--fw-bold);
+
+    color: #F5F5F5;
+
+}
+
+
+.nav2 {
+    
+    padding: 2rem 6.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.nav_list2 {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+    font-weight: var(--fw-bold);
+ 
+}
+
+.nav_link2 {
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    color: var(--clr-dark);
+    text-decoration: none;
+    transition: 0.3s all ease-in;
+}
+
+.nav_link2:hover {
+    
+    color: white;
+    background-color: var(--clr-primary-color);
+}
+
+
+.main-section2 {
+    height: 100vh;
+
+    margin: 0;
+    padding: 0 0 0 10rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+.donate-btn2 button {
+    margin-top: 16px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    color: var(--clr-light);
+    font-family: 'Vollkorn', serif;
+    font-size: 18px;
+    font-weight: var(--fw-bold);
+
+    background-color: var(--clr-primary-color);
+    cursor: pointer;
+}
+
+.donate-btn2 button:hover{
+  opacity: 0.8;
+}
+
+.donate-btn2 button:active{
+  opacity: 0.5;
+}
+
+.first-content2 {
+    text-align: center;
+    margin-bottom: 200px;
+}
+.first-content2 h1 {
+    font-size: 36px;
+    font-weight: var(--fw-bold);
+    color: var(--clr-text);
+}
+
+.first-content2 p {
+    font-size: 16px;
+    font-weight: var(--fw-medium);
+
+}
+
+.first-content span {
+    font-size: 20px;
+    color: #A50000;
+}
+
+.dropdown{
+  display: inline-block;
+}
+.dropdown button{
+  background-color: white;
+  color: black;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Vollkorn', serif;
+  font-weight: var(--fw-bold);
+  border-radius: 8px;
+}
+.dropdown a{
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+.dropdown .content{
+  display: none;
+  position: absolute;
+  background-color: hsl(0, 0%, 95%);
+  min-width: 100px;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+}
+.dropdown:hover .content{
+  display: block;
+}
+.dropdown:hover button{
+  background-color: var(--clr-primary-color);
+  color:white;
+  transition: 0.3s all ease-in;
+}
+.dropdown a:hover{
+  background-color: var(--clr-primary-color);
+  color: white;
+  transition: 0.3s all ease-in;
+}
