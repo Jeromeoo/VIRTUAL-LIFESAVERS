@@ -99,3 +99,10 @@ color: white;
   color: white;
 }
 
+.default-profile {
+  width: 90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
