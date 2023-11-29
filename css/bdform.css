@@ -184,3 +184,23 @@ body {
     height: 30px;
     font-size: 15px;
 }
+
+a {
+    border: solid;
+  border-color: #A50000;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #A50000;
+  color: white;
+  border-radius: 50%;
+}
+
+a:hover{
+    opacity: 0.8;
+}
+
+a:active{
+    opacity: 0.5;
+}

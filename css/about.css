@@ -154,6 +154,7 @@ nav {
     background-color: var(--clr-primary-color);
     cursor: pointer;
     text-decoration: none;
+    text-align: center;
 }
 
 
