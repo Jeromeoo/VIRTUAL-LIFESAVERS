@@ -170,6 +170,7 @@ ul li:hover a{
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .btype-aplus {
@@ -285,6 +286,7 @@ ul li:hover a{
 .btype-abminus p{
   font-size: 40px;
   margin-left: 15px;
+  
 }
 
 .container3 {
@@ -309,6 +311,7 @@ ul li:hover a{
 .total-donors p{
   font-size: 20px;
   margin-left: 15px;
+  font-weight: bold;
 }
 
 .total-donors i{
@@ -333,6 +336,7 @@ ul li:hover a{
 .tday-donated p{
   font-size: 20px;
   margin-left: 15px;
+  font-weight: bold;
 }
 
 .tday-donated i{
@@ -356,6 +360,7 @@ ul li:hover a{
 .tdayrequests p{
   font-size: 20px;
   margin-left: 15px;
+  font-weight: bold;
 }
 
 .tdayrequests i{
@@ -378,6 +383,7 @@ ul li:hover a{
 .tdayrequests-approved p{
   font-size: 20px;
   margin-left: 15px;
+  font-weight: bold;
 }
 
 .tdayrequests-approved i{
