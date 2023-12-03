@@ -1,0 +1,279 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+:root{
+    
+    --clr-text: #2C2C2C;
+    --clr-accent: #212121;
+    --clr-light: #FFF;
+    --clr-dark: #000;
+
+    --clr-primary-color: #820000;
+
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+}
+
+
+html {
+    scroll-behavior: smooth scroll;
+}
+
+
+body {
+
+    margin: 0 auto;
+    height: 100vh;
+    font-family: 'Vollkorn', serif;
+    font-size: 	16px;
+    line-height: 1.5;
+    background-image: url(images/halftone.png);
+    
+
+
+}
+
+
+header {
+ 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    /* box-shadow: 0 1px 6px 0 rgb(32 33 36 / 10%); */
+    
+    
+}
+.site-header {
+
+    transition: box-shadow 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out; 
+}
+
+.site-header.scrolled {
+    background-color: var(--clr-light);
+
+
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 10%);
+}
+
+
+.announcement {
+    background-color: var(--clr-primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+ 
+
+    padding: 0 6.25rem;
+}
+
+.announcement p {
+
+    font-size: 20px;
+    font-weight: var(--fw-bold);
+
+    color: #F5F5F5;
+
+}
+
+
+nav {
+    
+    padding: 2rem 6.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+.nav_list {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+
+    font-weight: var(--fw-bold);
+ 
+}
+
+.nav_link {
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    color: var(--clr-dark);
+    text-decoration: none;
+    transition: 0.3s all ease-in;
+}
+
+.nav_link:hover {
+    
+    color: white;
+    background-color: var(--clr-primary-color);
+}
+
+
+.main-section {
+    height: 100vh;
+
+    margin: 0;
+    margin-top: 130px;
+    padding: 0 0 0 10rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.donate-btn {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.donate-btn a {
+    margin-top: 16px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    color: var(--clr-light);
+    font-family: 'Vollkorn', serif;
+    font-size: 18px;
+    font-weight: var(--fw-bold);
+    background-color: var(--clr-primary-color);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.donate-btn a:hover{
+    opacity: 0.8;
+  }
+  
+.donate-btn a:active{
+    opacity: 0.5;
+  }
+
+
+
+.first-content {
+    text-align: center;
+    margin-bottom: 200px;
+}
+.first-content h1 {
+    font-size: 36px;
+    font-weight: var(--fw-bold);
+    color: var(--clr-text);
+}
+
+.first-content p {
+    font-size: 16px;
+    font-weight: var(--fw-medium);
+
+}
+
+.first-content span {
+    font-size: 20px;
+    color: #A50000;
+}
+
+.contact-section{
+    font-size: 70px;
+    text-align: center;
+}
+
+.contact-section span{
+    color:#820000;
+}
+
+
+.contact-main-section{
+    height: 100vh;
+
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(images/about-bgimg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: lighten;
+}
+
+.contact-second-section{
+    display: flex;
+    align-items: center;
+    height: 300px;
+justify-content:center;
+padding-top: 20px;
+    
+}
+
+.Address h1{
+text-align: center;
+font-size: 50px;
+}
+
+.Address p{
+text-align: center;
+font-size: 20px;
+}
+
+.contact-third-section{
+display: flex;
+align-items: center;
+height: 300px;
+justify-content:center;
+padding-top: 20px;
+
+}
+
+.phone-number h1{
+text-align: center;
+font-size: 50px;
+}
+
+.phone-number p{
+text-align: center;
+font-size: 20px;
+}
+
+.contact-fourth-section{
+display: flex;
+align-items: center;
+height: 300px;
+justify-content:center;
+padding-top: 20px;
+
+}
+
+.email-add h1 {
+text-align: center;
+font-size: 50px;
+}
+
+.email-add p {
+text-align: center;
+font-size: 20px;
+}
+
+.whole-bottom-section{
+    background-image: url(images/contact-second-pic.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
