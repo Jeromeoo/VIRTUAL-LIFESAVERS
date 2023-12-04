@@ -163,7 +163,7 @@ ul li:hover a{
 }
 
 .container1 {
-  width: 1500px;
+  width: 1600px;
   position: relative;
   left: 280px;
   top: 20px;
@@ -188,14 +188,12 @@ table {
 th {
   background-color: #acacac;
   text-align: center;
-
-
 }
 
 td {
   background-color: white;
   text-align: center;
-  padding: 10px 70px 10px 70px;
+  padding: 10px 80px 10px 80px;
 }
 
 .cancel-btn {
