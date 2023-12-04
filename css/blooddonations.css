@@ -172,11 +172,64 @@ ul li:hover a{
   align-items: center;
 }
 
-table, th, td {
-  border-style: 1px solid black;
+.container1 table, th, td {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+}
+
+.container1 {
+  background-color: #820000;
+  
+}
+
+th {
+  background-color: #acacac;
+  text-align: center;
+  padding: 10px 70px 10px 70px;
+
 }
 
 td {
-  background-color: gray;
+  background-color: white;
   text-align: center;
+  padding: 10px 70px 10px 70px;
+}
+
+.cancel-btn {
+  background-color: #ebebeb;
+  padding: 5px;
+  border: 1px solid black;
+  font-weight: var(--fw-semibold);
+  margin-right: 11px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  opacity: 0.8;
+}
+
+.cancel-btn:active{
+  opacity: 0.6;
+}
+
+.accept-btn {
+  background-color: #820000;
+  padding: 5px;
+  border: 1px solid black;
+  font-weight: var(--fw-semibold);
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.accept-btn:hover {
+  opacity: 0.8;
+}
+
+.accept-btn:active{
+  opacity: 0.6;
 }
