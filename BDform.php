@@ -36,7 +36,7 @@ function processForm() {
         $donationDay = $_POST['day'];
         $donationTime = $_POST['time'];
 
-        
+
         // Validate and sanitize the data (add your validation logic here)
 
         // Your SQL query to insert data into the database
@@ -75,7 +75,7 @@ processForm();
 </head>
 <body>
     <section class="container">
-    <a href="homepage2.php" ><i class="fa-solid fa-arrow-left"></i></a>
+    <a href="homepage.php" ><i class="fa-solid fa-arrow-left"></i></a>
         <h2>Blood Donation Form</h2>
         <form action="" method="post" class="form">
             What is your blood type? <br>
