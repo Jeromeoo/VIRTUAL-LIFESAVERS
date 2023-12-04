@@ -32,7 +32,7 @@ function processForm() {
         $bloodPressure = $_POST['bp'];
         $temperature = $_POST['temp'];
         $donatedPreviously = isset($_POST['yes-or-no']) && $_POST['yes-or-no'] == 'Yes';
-        $lastDonationDate = $donatedPreviously ? $_POST['donate-blood'] : null;
+        $lastDonationDate = $donatedPreviously ? $_POST['last_donation_date'] : null;
         $donationDay = $_POST['day'];
         $donationTime = $_POST['time'];
 
@@ -47,7 +47,6 @@ function processForm() {
         echo "SQL Query: " . $sql . "<br>";
 
         if ($conn->query($sql) === TRUE) {
-            echo "Request sent!";
             echo "<script>alert('Request Sent!'); window.location = 'homepage2.php';</script>";
             exit(); // Ensure that the script stops execution after the redirection
         } else {
@@ -75,7 +74,7 @@ processForm();
 </head>
 <body>
     <section class="container">
-    <a href="homepage.php" ><i class="fa-solid fa-arrow-left"></i></a>
+    <a href="homepage2.php" ><i class="fa-solid fa-arrow-left"></i></a>
         <h2>Blood Donation Form</h2>
         <form action="" method="post" class="form">
             What is your blood type? <br>
@@ -228,7 +227,7 @@ processForm();
             <div class="divcolumn">
                 <div class="input-box">
                 <label>When was the last time you donated blood?</label>
-                <input type="date" name="donate-blood" required>
+                <input type="date" placeholder="Donation Date" name="last_donation_date" required>
             </div>
         </div>
         <BR>

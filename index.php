@@ -13,15 +13,20 @@ if (isset($_POST['submit'])) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         if (isset($row['password'])) {
             $storedPassword = $row['password'];
+            $userRole = $row['role']; // Assuming 'role' is the column indicating user role
 
             if (password_verify($password, $storedPassword)) {
-                echo "<script>alert('Login Successfully!');</script>";
-                header("Location: homepage.php");
+                if ($userRole == 'admin') {
+                    // Admin login
+                    echo "<script>alert('Admin Login Successfully'); window.location = 'admin.php';</script>";
+                } else {
+                    // Regular user login
+                    echo "<script>alert('User Login Successfully'); window.location = 'homepage2.php';</script>";
+                }
                 exit;
             } else {
                 echo "<script>alert('Incorrect password. Please try again.');</script>";
             }
-            
         } else {
             echo "<script>alert('Password not found for this user.');</script>";
         }
@@ -30,6 +35,7 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

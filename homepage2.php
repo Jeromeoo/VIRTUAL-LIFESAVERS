@@ -42,8 +42,8 @@
                 <button>MORE ↓</button>
                 <div class="content">
                     <a href="">PROFILE</a>
-                    <a href="">EDIT PROFILE</a>
-                    <a href="">LOG OUT</a>
+                    <a href="editprofile.php">EDIT PROFILE</a>
+                    <a href="homepage.php">LOG OUT</a>
                   </div>
            </li>
                 

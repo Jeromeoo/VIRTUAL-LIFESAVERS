@@ -1,0 +1,235 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+:root{
+    
+    --clr-text: #2C2C2C;
+    --clr-accent: #212121;
+    --clr-light: #FFF;
+    --clr-dark: #000;
+
+    --clr-primary-color: #820000;
+
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+}
+
+
+html {
+    scroll-behavior: smooth scroll;
+}
+
+
+body {
+
+    margin: 0 auto;
+    height: 100vh;
+    font-family: 'Vollkorn', sans-serif;
+    font-size: 	16px;
+    line-height: 1.5;
+    
+    background-image: url(images/halftone.png);
+
+}
+.site-header {
+
+  transition: box-shadow 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out; 
+}
+header {
+ 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    /* box-shadow: 0 1px 6px 0 rgb(32 33 36 / 10%); */
+    
+    
+}
+
+.announcement-header {
+  background-color: var(--clr-primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ 
+
+
+  padding: 0 6.25rem;
+}
+
+.announcement-header p {
+
+  font-size: 23px;
+  font-weight: var(--fw-bold);
+  color: #F5F5F5;
+}
+
+.dropdown{
+  display: inline-block;
+  
+}
+.dropdown button{
+  background-color: white;
+  color: black;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Vollkorn', serif;
+  font-weight: var(--fw-bold);
+  border-radius: 8px;
+  font-size: 20px;
+}
+.dropdown a{
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+.dropdown .content{
+  display: none;
+  position: absolute;
+  background-color: hsl(0, 0%, 95%);
+  min-width: 100px;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+}
+.dropdown:hover .content{
+  display: block;
+}
+
+.dropdown:hover button{
+  background-color: rgb(190, 190, 190);
+  color: black;
+  transition: 0.3s all ease-in;
+}
+.dropdown a:hover{
+  background-color: rgb(190, 190, 190);
+  color: black;
+  transition: 0.3s all ease-in;
+  
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: var(--clr-primary-color);
+  
+}
+
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.459);
+  border-bottom: 1px solid black;
+  transition: .4s;
+  background-color: rgb(185, 32, 58);
+}
+
+ul li:hover a{
+  padding-left: 50px;
+}
+
+.sidebar ul a i{
+  margin-right: 16px;
+}
+
+.head {
+  position: relative;
+  left: 280px;
+  top: 20px;
+}
+
+.container1 {
+  width: 1500px;
+  position: relative;
+  left: 280px;
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container1 table, th, td {
+  border: 1px solid black;
+}
+
+table {
+  width: 100%;
+}
+
+.container1 {
+  background-color: #820000;
+  
+}
+
+th {
+  background-color: #acacac;
+  text-align: center;
+
+
+}
+
+td {
+  background-color: white;
+  text-align: center;
+  padding: 10px 70px 10px 70px;
+}
+
+.cancel-btn {
+  background-color: #ebebeb;
+  padding: 5px;
+  border: 1px solid black;
+  font-weight: var(--fw-semibold);
+  margin-right: 11px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  opacity: 0.8;
+}
+
+.cancel-btn:active{
+  opacity: 0.6;
+}
+
+.accept-btn {
+  background-color: #820000;
+  padding: 5px;
+  border: 1px solid black;
+  font-weight: var(--fw-semibold);
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+}
+
+.accept-btn:hover {
+  opacity: 0.8;
+}
+
+.accept-btn:active{
+  opacity: 0.6;
+}

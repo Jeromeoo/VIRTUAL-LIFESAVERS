@@ -40,10 +40,13 @@
         <p>Contact Number:</p> 
         <input class="editinput" type="text" placeholder="Enter your contact number" name="contactno" required>
     </div>
+      <br>
+      <div class="input-box">
+        <p>Email:</p> 
+        <input class="editinput" type="text" placeholder="Enter your email" name="email" required>
   <br>
   <br>
     </form>
     </div>
   </body>
 </html>
-
