@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    background-image: url(images/blood-donate-pic.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wrapper {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    padding: 34px;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    border: 5px solid rgba(72, 0, 0, 0.80);
+    background-image: url(images/halftone.png);
+}
+
+.pic {
+    width: 150px;
+    border-radius: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.wrapper h2 {
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+.wrapper h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 28px;
+    border-radius: 12px;
+}
+
+.wrapper a{
+    font-weight: bold;
+    font-size: large;
+}
+
+.wrapper i {
+    color: red;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+.save a{
+    margin-top: 50px;
+}
