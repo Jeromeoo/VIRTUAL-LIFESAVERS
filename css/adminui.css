@@ -1,0 +1,406 @@
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+:root{
+    
+    --clr-text: #2C2C2C;
+    --clr-accent: #212121;
+    --clr-light: #FFF;
+    --clr-dark: #000;
+
+    --clr-primary-color: #820000;
+
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+
+}
+
+
+html {
+    scroll-behavior: smooth scroll;
+}
+
+
+body {
+
+    margin: 0 auto;
+    height: 100vh;
+    font-family: 'Vollkorn', sans-serif;
+    font-size: 	16px;
+    line-height: 1.5;
+    
+    background-image: url(images/halftone.png);
+
+}
+.site-header {
+
+  transition: box-shadow 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out; 
+}
+header {
+ 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    /* box-shadow: 0 1px 6px 0 rgb(32 33 36 / 10%); */
+    
+    
+}
+
+.announcement-header {
+  background-color: var(--clr-primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ 
+
+
+  padding: 0 6.25rem;
+}
+
+.announcement-header p {
+
+  font-size: 23px;
+  font-weight: var(--fw-bold);
+  color: #F5F5F5;
+}
+
+.dropdown{
+  display: inline-block;
+  
+}
+.dropdown button{
+  background-color: white;
+  color: black;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Vollkorn', serif;
+  font-weight: var(--fw-bold);
+  border-radius: 8px;
+  font-size: 20px;
+}
+.dropdown a{
+  display: block;
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+.dropdown .content{
+  display: none;
+  position: absolute;
+  background-color: hsl(0, 0%, 95%);
+  min-width: 100px;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.8);
+}
+.dropdown:hover .content{
+  display: block;
+}
+
+.dropdown:hover button{
+  background-color: rgb(190, 190, 190);
+  color: black;
+  transition: 0.3s all ease-in;
+}
+.dropdown a:hover{
+  background-color: rgb(190, 190, 190);
+  color: black;
+  transition: 0.3s all ease-in;
+  
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: var(--clr-primary-color);
+  
+}
+
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.459);
+  border-bottom: 1px solid black;
+  transition: .4s;
+  background-color: rgb(185, 32, 58);
+}
+
+ul li:hover a{
+  padding-left: 50px;
+}
+
+.sidebar ul a i{
+  margin-right: 16px;
+}
+
+.head {
+  position: relative;
+  left: 280px;
+  top: 20px;
+}
+
+.container1 {
+  width: 1500px;
+  position: relative;
+  left: 280px;
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.btype-aplus {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+}
+
+.btype-aplus p{
+  font-size: 40px;
+  margin-left: 15px;
+}
+
+.btype-bplus {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+}
+
+.btype-bplus p{
+  font-size: 40px;
+  margin-left: 15px;
+}
+
+.btype-oplus {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+}
+
+.btype-oplus p{
+  font-size: 40px;
+  margin-left: 15px;
+}
+
+.btype-abplus {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+}
+
+.btype-abplus p{
+  font-size: 40px;
+  margin-left: 15px;
+}
+
+.container2 {
+  width: 1500px;
+  position: relative;
+  left: 280px;
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btype-aminus {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+  
+}
+
+.btype-aminus p{
+  font-size: 40px;
+  margin-left: 15px;
+}
+
+.btype-bminus {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+}
+
+.btype-bminus p{
+  font-size: 40px;
+  margin-left: 15px;
+}
+
+.btype-ominus {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+}
+
+.btype-ominus p{
+  font-size: 40px;
+  margin-left: 15px;
+}
+
+.btype-abminus {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+}
+
+.btype-abminus p{
+  font-size: 40px;
+  margin-left: 15px;
+  
+}
+
+.container3 {
+  width: 1500px;
+  position: relative;
+  left: 280px;
+  top: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-donors {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+  
+}
+
+.total-donors p{
+  font-size: 20px;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.total-donors i{
+  margin-top: 10px;
+  color: rgb(2, 140, 194);
+  font-size: 30px;
+}
+
+.total-donors span {
+  margin-left: 5px;
+}
+
+.tday-donated {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+  vertical-align: middle;
+}
+
+.tday-donated p{
+  font-size: 20px;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.tday-donated i{
+  margin-top: 10px;
+  color: 	#880808;
+  font-size: 30px;
+}
+
+.tday-donated span {
+  margin-left: 5px;
+}
+
+.tdayrequests {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+}
+
+.tdayrequests p{
+  font-size: 20px;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.tdayrequests i{
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.tdayrequests span {
+  margin-left: 5px;
+}
+
+.tdayrequests-approved {
+  margin-top: 20px;
+  height: 150px;
+  width: 350px;
+  background-color: rgb(226, 226, 226);
+  border: solid 1px;
+}
+
+.tdayrequests-approved p{
+  font-size: 20px;
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.tdayrequests-approved i{
+  margin-top: 10px;
+  font-size: 30px;
+  color: rgb(2, 140, 194);
+}
+
+.tdayrequests-approved span {
+  margin-left: 5px;
+}
+
+.container1 i{
+  color: 	#880808;
+}
+
+.container2 i{
+  color: 	#880808;
+}
+

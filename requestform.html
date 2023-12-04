@@ -34,7 +34,7 @@
                 <option value="o-">O-</option>
             </select>
             <br>
-            <label for="blood">Request Blood Type</label>
+            <label for="blood">Request Blood Type:</label>
                 <select id="blood" name="blood">
                 <option value="a+">A+</option>
                 <option value="a-">A-</option>
@@ -47,13 +47,16 @@
             </select>
             <div class="input-box">
                 Purpose of Blood Request: <br>
-                <input type="text" placeholder="" name="fname" required>
+                <input type="text" placeholder="Purpose of your request" name="fname" required>
             </div>
            
             <br>
             Additional Message (Optional)<br>
-            <textarea name="Message" rows="10" cols="52">
+            <textarea class="Message" name="Message" rows="9" cols="49">
             </textarea>
+            <div class="submit-container">
+                <button name="submit" class="submit-button" type="submit"><span>Submit</span></button>
+           </div>
         </form>
 </body>
 </html>

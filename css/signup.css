@@ -41,6 +41,18 @@ body {
 
 
 }
+.site-header {
+
+  transition: box-shadow 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out; 
+}
+
+.site-header.scrolled {
+  background-color: var(--clr-light);
+
+
+  box-shadow: 0 1px 6px 0 rgb(32 33 36 / 10%);
+}
 
 
 header {
@@ -123,7 +135,7 @@ nav {
   font-family: 'Vollkorn', sans-serif;
 }
 body{
-  min-height: 110vh;
+  min-height: 120vh;
   display: flex;
   align-items: center;
   justify-content: center;
