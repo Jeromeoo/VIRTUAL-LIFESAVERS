@@ -35,11 +35,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Request Form | Virtual Lifesaver</title>
     <link rel="stylesheet" href="css/requestform.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
+
     <div class="wrapper">
+    <a href="homepage2.php" ><i class="fa-solid fa-arrow-left"></i></a>
+    <form action=" " method="post" class="form">
         <h2>Blood Request Appointment</h2>
-        <form action=" " method="post" class="form">
+      
+        
             <div class="input-box">
                 Full Name: <br>
                 <input type="text" placeholder="Enter your name" name="requester_name" required>
@@ -67,7 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <option value="o+">O+</option>
                 <option value="o-">O-</option>
             </select>
-            <br>
             <label for="request_blood">Request Blood Type:</label>
             <select id="request_blood" name="request_blood">
                 <option value="a+">A+</option>

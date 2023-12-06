@@ -73,19 +73,27 @@ if (isset($_POST["Submit"])) {
     <h2>Sign Up</h2>
     <form action="signup_process.php" method="post">
       <div class="input-box">
-        <label for="fullname">Fullname:</label> 
-        <input type="text" placeholder="Enter your name" name="fname" required>
+        <label for="fname">First Name:</label> 
+        <input type="text" placeholder="Enter your first name" name="fname" required>
       </div> <br>
       <div class="input-box">
-      <label for="fullname">Email:</label> 
+        <label for="lname">Last Name:</label> 
+        <input type="text" placeholder="Enter your last name" name="lname" required>
+      </div> <br>
+      <div class="input-box">
+        <label for="address">Address:</label> 
+        <input type="text" placeholder="Enter your address" name="address" required>
+      </div> <br>
+      <div class="input-box">
+      <label for="email">Email:</label> 
         <input type="text" placeholder="Enter your email" name="email" required>
       </div> <br>
       <div class="input-box">
-      <label for="fullname">Password:</label> 
+      <label for="password">Password:</label> 
         <input type="password" placeholder="Create password" name="password" required>
       </div> <br>
       <div class="input-box">
-      <label for="fullname">Retype your password:</label> 
+      <label for="cpassword">Retype your password:</label> 
         <input type="password" placeholder="Confirm password" name="cpassword" required>
       </div> <br>
       <div class="input-box">

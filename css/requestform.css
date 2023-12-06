@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap');
 *{
     box-sizing: border-box;
-    font-family: 'Poppines', sans-serif;
+    font-family: 'Poppins', sans-serif;
     
 }
 body {
@@ -102,4 +102,23 @@ form .input-box input{
 .Message {
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+a {
+border: solid;
+  border-color: #A50000;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #A50000;
+  color: white;
+  border-radius: 50%;
+}
+
+a:hover{
+    opacity: 0.8;
+}
+
+a:active{
+    opacity: 0.5;
 }
