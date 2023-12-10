@@ -43,6 +43,7 @@
                 <div class="content">
                     <a href="">PROFILE</a>
                     <a href="editprofile.php">EDIT PROFILE</a>
+                    <a href="">USER DASHBOARD</a>
                     <a href="homepage.php">LOG OUT</a>
                   </div>
            </li>
