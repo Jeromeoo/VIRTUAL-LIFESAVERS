@@ -78,60 +78,84 @@
 </section>
 
 
-<section>
-<footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <h6>About</h6>
-            <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
-          </div>
+<section class="tips">
+  <h1>GIVE BLOOD</h1>
+    <hr class="line">
+<div class="row">
+  <div class="tips-col">
+      <h3>WHAT IS BLOOD  DONATION & REQUESTING</h3>
+      <p>Blood donation is when people voluntarily give a part of their blood to help others in need.
+     This selfless act takes place at blood donation center.
+      The donated blood is crucial for medical treatments, surgeries, and emergency,
+       while blood requesting happens when healthcare providers or hospitals seek specific
+        blood types or components to assist patients. They make these requests through blood banks.
+         The goal is to match the requested blood with a suitable donor,
+          ensuring safe and effective transfusions.</p>
+  </div>
+  <div class="tips-col">
+      <h3>HOW TO DONATE & REQUEST BLOOD</h3>
+      <p>Donating blood through our online appointment system is a straightforward and efficient process.
+         If you're a healthy individual aged 17 or older, you can easily contribute to the gift of life.
+          Begin by visiting our online platform and creating an account, if you haven't done so already.
+           Once logged in, navigate to the blood donation section, where you can choose a date, time,
+            and location that suits you best. Complete a brief health questionnaire to ensure eligibility,
+             confirm your appointment details, and submit your request. After confirmation, 
+             you'll receive all the necessary information, including the location and any additional 
+             instructions. Your commitment to this simple online process makes a significant impact in 
+             saving lives. Thank you for being a vital part of our blood donation community!
+             <br><br>
+             Request blood through our user-friendly online platform. 
+             Simply log in, go to the blood request section, and specify the needed blood type or 
+             components, including any urgent details. Once submitted, our system promptly notifies 
+             matching potential donors. Upon finding a suitable match, you'll receive confirmation and 
+             details about the available blood supply. Our platform simplifies the connection between 
+             donors and recipients, ensuring a swift response to medical needs and contributing to the 
+             well-being of those in need.
+</p>
+  </div>
+  <div class="tips-col">
+      <h3>WHO CAN DONATE & REQUEST</h3>
+      <p>Our online blood appointment system makes it easy for both donors and those in need. 
+        If you're healthy and 17 or older, you can schedule a donation to help save lives. 
+        For medical professionals, our platform simplifies the process of requesting specific blood types 
+        or components for patients. It's a straightforward way to connect donors with those who require 
+        blood, ensuring timely and targeted assistance in healthcare situations. 
+        Join us in this simple yet impactful journey of blood donation and requests.</p>
+  </div>
+</div>
 
-          <div class="col-xs-6 col-md-3">
-            <h6>Categories</h6>
-            <ul class="footer-links">
-              <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-              <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-              <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-              <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-              <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-              <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
-            </ul>
-          </div>
-
-          <div class="col-xs-6 col-md-3">
-            <h6>Quick Links</h6>
-            <ul class="footer-links">
-              <li><a href="http://scanfcode.com/about/">About Us</a></li>
-              <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-              <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-              <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-              <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
-            </ul>
-          </div>
-        </div>
-        <hr>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
-         <a href="#">Scanfcode</a>.
-            </p>
-          </div>
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <ul class="social-icons">
-              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
-            </ul>
-          </div>
-        </div>
-      </div>
-</footer>
 </section>
+
+<!--- Section Two ------>
+<section class="tips-two">
+    <h1>More Details</h1>
+    <div class="row-two">
+  <div class="tips-col-two">
+      <h3>AFTER DONATING BLOOD</h3>
+      <p>The person typically rests briefly to prevent dizziness, enjoys light snacks and drinks to 
+        boost energy, has the donation site bandaged, and receives post-donation instructions, 
+        including avoiding strenuous activity and staying hydrated. Some centers monitor donors briefly.
+         Over the next few weeks, the body naturally replaces the donated blood components,
+          and most donors feel a sense of accomplishment knowing they've contributed to saving lives.</p>
+</div>
+<div class="row-two">
+  <div class="tips-col-two">
+      <img src="css/images/ManDonating 1.png" alt="">
+</div>
+<div class="row">
+  <div class="tips-col-two">
+      <h3>AFTER DONATING BLOOD</h3>
+      <p>The person typically rests briefly to prevent dizziness, enjoys light snacks and drinks to 
+        boost energy, has the donation site bandaged, and receives post-donation instructions, 
+        including avoiding strenuous activity and staying hydrated. Some centers monitor donors briefly.
+         Over the next few weeks, the body naturally replaces the donated blood components,
+          and most donors feel a sense of accomplishment knowing they've contributed to saving lives.</p>
+</div>
+
+</div>
+</section>
+
+
 
 <script>
     // HEADER 
