@@ -59,7 +59,7 @@ if (isset($_POST["Submit"])) {
         <p></p>
     </div>
     <nav class="nav">
-        <img src="images/Logo.png" alt="">
+        <img src="css/images/Logo.png" alt="">
         <ul class="nav_list">
         <li class="nav_list-item"><a href="homepage.php" class="nav_link">HOME</a></li>
             <li class="nav_list-item"><a href="about.php" class="nav_link">ABOUT</a></li>

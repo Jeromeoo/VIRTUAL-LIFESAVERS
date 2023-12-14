@@ -80,7 +80,7 @@
 
 <section class="tips">
   <h1>GIVE BLOOD</h1>
-    <hr class="line">
+
 <div class="row">
   <div class="tips-col">
       <h3>WHAT IS BLOOD  DONATION & REQUESTING</h3>

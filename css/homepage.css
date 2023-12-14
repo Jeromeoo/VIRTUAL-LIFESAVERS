@@ -204,13 +204,14 @@ nav {
   margin: auto;
   text-align: center;
   padding-top: 100px;
-  background-color: #820000;
+  background-color: #4B0808;
     
 }
 
 .tips h1{
   font-size: 36px;
   font-weight: 600;
+  color: white;
 }
 
 .tips p{
@@ -272,6 +273,7 @@ nav {
     margin-top: 5%;
     display: flex;
     justify-content: space-between;
+    flex-shrink: 0;
   }
     
   .tips-col-two {
