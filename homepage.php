@@ -16,11 +16,7 @@
 
 </head>
 <body>
-
-
     <header class="site-header">
-
-
         <div class="announcement">
 
             <img src="css/images/Announcement-Logo.jpg" alt="">
@@ -44,6 +40,7 @@
             </ul>
         </nav>
         </header>
+  
         <section class="main-section">
             <div class="first-content">
               <h1>Every drop of blood <br>
@@ -60,23 +57,33 @@
           <a href="BDform.php">DONATE BLOOD NOW</a>
               <a href="requestform.php">REQUEST BLOOD NOW</a>
           </div>
-      
-           
-          
+
             </div>
-          
-          
-          
             <div class="second-content">
              
               <img src="css/images/second-content.png" alt="">
             </div>
-            
-          
-    
-  
 </section>
+<section class="certified-section">
+  <div class="certified">
+    <h1>Get Certified:
+      <br> Standard First Aid and <br>
+       Basic Life Support <br> 
+         Training</h1>
+    <p>Every second matters when an emergency occurs. Immediate and expert <br> medical care, however,
+       is not always accessible in critical situations. Have <br>
+        the knowledge and confidence to respond effectively in emergency <br>
+         situations by taking this course and learning life-saving techniques and <br>
+          skills. Start a unique learning experience as you become ready to save lives <br>
+          in various emergency situations.
+</p>
+  <a href="https://redcross.elearnified.com/">ENROLL NOW!</a>
+<div class="train">
+    <img src="css/images/training.png" alt="">
+</div>
+  </div>
 
+</section>
 
 <section class="tips">
   <h1>GIVE BLOOD</h1>
@@ -142,7 +149,7 @@
   <div class="tips-col-two">
       <img src="css/images/ManDonating 1.png" alt="">
 </div>
-<div class="row">
+<div class="row-two">
   <div class="tips-col-two">
       <h3>AFTER DONATING BLOOD</h3>
       <p>The person typically rests briefly to prevent dizziness, enjoys light snacks and drinks to 
