@@ -44,7 +44,7 @@
                     <a href="">PROFILE</a>
                     <a href="editprofile.php">EDIT PROFILE</a>
                     <a href="">USER DASHBOARD</a>
-                    <a href="">HOW TO DONATE / PROGRAMS</a>
+                    <a href="">HOW TO DONATE</a>
                     <a href="homepage.php">LOG OUT</a>
                   </div>
            </li>
