@@ -66,10 +66,8 @@
 </section>
 <section class="certified-section">
   <div class="certified">
-    <h1>Get Certified:
-      <br> Standard First Aid and <br>
-       Basic Life Support <br> 
-         Training</h1>
+    <h1>Get Certified: Standard First Aid and <br>
+       Basic Life Support Training</h1>
     <p>Every second matters when an emergency occurs. Immediate and expert <br> medical care, however,
        is not always accessible in critical situations. Have <br>
         the knowledge and confidence to respond effectively in emergency <br>
@@ -78,10 +76,8 @@
           in various emergency situations.
 </p>
   <a href="https://redcross.elearnified.com/">ENROLL NOW!</a>
-<div class="train">
-    <img src="css/images/training.png" alt="">
-</div>
   </div>
+  
 
 </section>
 
@@ -98,9 +94,13 @@
         blood types or components to assist patients. They make these requests through blood banks.
          The goal is to match the requested blood with a suitable donor,
           ensuring safe and effective transfusions.</p>
+          <div class="col-pics">
+          <img src="css/images/donateblood.png" alt="" width="450" height="250">
+          </div>
+          
   </div>
   <div class="tips-col">
-      <h3>HOW TO DONATE & REQUEST BLOOD</h3>
+      <h3>HOW TO DONATE & REQUEST BLOOD?</h3>
       <p>Donating blood through our online appointment system is a straightforward and efficient process.
          If you're a healthy individual aged 17 or older, you can easily contribute to the gift of life.
           Begin by visiting our online platform and creating an account, if you haven't done so already.
@@ -121,48 +121,61 @@
 </p>
   </div>
   <div class="tips-col">
-      <h3>WHO CAN DONATE & REQUEST</h3>
+      <h3>WHO CAN DONATE & REQUEST?</h3>
       <p>Our online blood appointment system makes it easy for both donors and those in need. 
         If you're healthy and 17 or older, you can schedule a donation to help save lives. 
         For medical professionals, our platform simplifies the process of requesting specific blood types 
         or components for patients. It's a straightforward way to connect donors with those who require 
         blood, ensuring timely and targeted assistance in healthcare situations. 
         Join us in this simple yet impactful journey of blood donation and requests.</p>
+        <div class="col-pics">
+          <img src="css/images/ManDonating 1.png" alt="" width="400" height="300">
+          </div>
   </div>
 </div>
 
 </section>
 
-<!--- Section Two ------>
-<section class="tips-two">
-    <h1>More Details</h1>
-    <div class="row-two">
-  <div class="tips-col-two">
-      <h3>AFTER DONATING BLOOD</h3>
-      <p>The person typically rests briefly to prevent dizziness, enjoys light snacks and drinks to 
-        boost energy, has the donation site bandaged, and receives post-donation instructions, 
-        including avoiding strenuous activity and staying hydrated. Some centers monitor donors briefly.
-         Over the next few weeks, the body naturally replaces the donated blood components,
-          and most donors feel a sense of accomplishment knowing they've contributed to saving lives.</p>
-</div>
-<div class="row-two">
-  <div class="tips-col-two">
-      <img src="css/images/ManDonating 1.png" alt="">
-</div>
-<div class="row-two">
-  <div class="tips-col-two">
-      <h3>AFTER DONATING BLOOD</h3>
-      <p>The person typically rests briefly to prevent dizziness, enjoys light snacks and drinks to 
-        boost energy, has the donation site bandaged, and receives post-donation instructions, 
-        including avoiding strenuous activity and staying hydrated. Some centers monitor donors briefly.
-         Over the next few weeks, the body naturally replaces the donated blood components,
-          and most donors feel a sense of accomplishment knowing they've contributed to saving lives.</p>
-</div>
-
-</div>
-</section>
-
-
+<footer>
+        <div class="f-item-con">
+            <div class="app-info">
+                <span class='app-name'>
+                    <span class='app-initial'>A</span>shoka
+                </span>
+                <p>We provides you with <strong>Well organised</strong> and <strong>SEO friendly</strong> Website Designs.</p>
+            </div>
+            <div class="useful-links">
+                <div class="footer-title">Useful Links</div>
+                <ul>
+                    <li>Courses</li>
+                    <li>Sign In</li>
+                    <li>About Us</li>
+                    <li>Become an Affiliate</li>
+                    <li>Advertise with Us</li>
+                    <li>Terms and Conditions</li>
+                </ul>
+            </div>
+            <div class="help-sec">
+                <div class="footer-title">Help</div>
+                <ul>
+                    <li>Help Me</li>
+                    <li>Feedback</li>
+                    <li>Report a Issue / Bug</li>
+                </ul>
+            </div>
+            <div class="g-i-t">
+                <div class="footer-title">Get in Touch</div>
+                <form action="/" method="post" class="space-y-2">
+                    <input type="text" name="g-name" class="g-inp" id="g-name" placeholder='Name' />
+                    <input type="email" name="g-email" class="g-inp" id="g-email" placeholder='Email' />
+                    <textarea type="text" name="g-msg" class="g-inp h-40 resize-none" id="g-msg"
+                        placeholder='Message...'></textarea>
+                    <button type="submit" class='f-btn'>Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class='cr-con'>Copyright &copy; 2022 | Made by Ashoka Sec</div>
+    </footer>
 
 <script>
     // HEADER 
