@@ -40,14 +40,14 @@ function processForm() {
         // Validate and sanitize the data (add your validation logic here)
 
         // Your SQL query to insert data into the database
-        $sql = "INSERT INTO donors (blood_type, fname, mname, lname, house_number, street, barangay, zipcode, birthdate, email, occupation, phonenumber, gender, weight, pulse, bp, temp, donated_previously, last_donation_date)
-                VALUES ('$bloodType', '$firstName', '$middleName', '$lastName', '$houseNumber', '$street', '$barangay', '$zipcode', '$birthdate', '$email', '$occupation', '$phoneNumber', '$gender', '$weight', '$pulse', '$bloodPressure', '$temperature', '$donatedPreviously', '$lastDonationDate')";
+        $sql = "INSERT INTO donors (blood_type, fname, mname, lname, house_number, street, barangay, zipcode, birthdate, email, occupation, phonenumber, gender, weight, pulse, bp, temp, donated_previously, last_donation_date,day,time)
+                VALUES ('$bloodType', '$firstName', '$middleName', '$lastName', '$houseNumber', '$street', '$barangay', '$zipcode', '$birthdate', '$email', '$occupation', '$phoneNumber', '$gender', '$weight', '$pulse', '$bloodPressure', '$temperature', '$donatedPreviously', '$lastDonationDate',' $donationDay','$donationTime')";
 
         // Debugging statement
         echo "SQL Query: " . $sql . "<br>";
 
         if ($conn->query($sql) === TRUE) {
-            echo "<script>alert('Request Sent!'); window.location = 'homepage2.php';</script>";
+            echo "<script>alert('Donation Sent!'); window.location = 'homepage2.php';</script>";
             exit(); // Ensure that the script stops execution after the redirection
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
@@ -76,42 +76,44 @@ processForm();
     <section class="container">
     <a href="homepage2.php" ><i class="fa-solid fa-arrow-left"></i></a>
         <h2>Blood Donation Form</h2>
-        <form action="" method="post" class="form">
+
+
+    <form action="" method="post" class="form">
             What is your blood type? <br>
             <div class="blood-type-container">               
                 <div class="form-check">
                     <div class="radio-box">
-                        <input class="form-check-input" type="radio" name="blood_type" id="a+">
+                        <input class="form-check-input" type="radio" name="blood_type" id="a+"value="a+">
                         <label class="form-check-label" for="a+">A+</label>
                     </div>
                     <div class="flexRadioDefault">
-                        <input class="form-check-input" type="radio" name="blood_type" id="a-">
+                        <input class="form-check-input" type="radio" name="blood_type" id="a-"value="a-">
                         <label class="form-check-label" for="a-">A-</label>
                     </div>
             <div class="radio-box">
-                <input class="form-check-input" type="radio" name="blood_type" id="b+">
+                <input class="form-check-input" type="radio" name="blood_type" id="b+"value="b+">
                 <label class="form-check-label" for="b+">B+</label>
             </div>
             <div class="radio-box">
-                <input class="form-check-input" type="radio" name="blood_type" id="b-">
+                <input class="form-check-input" type="radio" name="blood_type" id="b-"value="b-">
                 <label class="form-check-label" for="b-">B-</label>
             </div>
               </div>
               <div class="form-check">
                 <div class="radio-box">
-                    <input class="form-check-input" type="radio" name="blood_type" id="ab+">
+                    <input class="form-check-input" type="radio" name="blood_type" id="ab+"value="ab+">
                     <label class="form-check-label" for="ab+">AB+</label>
                 </div>
                 <div class="radio-box">
-                    <input class="form-check-input" type="radio" name="blood_type" id="ab-">
+                    <input class="form-check-input" type="radio" name="blood_type" id="ab-"value="ab-">
                     <label class="form-check-label" for="ab-">AB-</label>
                 </div>
                 <div class="radio-box">
-                    <input class="form-check-input" type="radio" name="blood_type" id="o+">
+                    <input class="form-check-input" type="radio" name="blood_type" id="o+"value="o+">
                     <label class="form-check-label" for="o+">O+</label>
                 </div>
                 <div class="radio-box">
-                    <input class="form-check-input" type="radio" name="blood_type" id="o-">
+                    <input class="form-check-input" type="radio" name="blood_type" id="o-"value="o-">
                     <label class="form-check-label" for="o-">O-</label>
                 </div>
               </div>
@@ -177,15 +179,15 @@ processForm();
             <h3>Gender</h3>
             <div class="gender-option">
                 <div class="gender">
-                    <input  type="radio" id="check-male" name="gender" />
+                    <input  type="radio" id="check-male" name="gender"value="male" />
                     <label for="check-male">Male</label>
                 </div>
                 <div class="gender">
-                    <input  type="radio" id="check-female" name="gender" />
+                    <input  type="radio" id="check-female" name="gender" value="female" />
                     <label for="check-female">Female</label>
                 </div>
                 <div class="gender">
-                    <input  type="radio" id="check-other" name="gender" />
+                    <input  type="radio" id="check-other" name="gender"value="prefer not to say" />
                     <label for="check-other">Prefer not to say</label>
                 </div>
             </div>
@@ -216,11 +218,11 @@ processForm();
             <h3>Have you donated previously?</h3>
             <div class="donate-option" class="column">
                 <div class="yes-or-no">
-                    <input  type="radio" id="Yes" name="yes-or-no" />
+                    <input  type="radio" id="Yes" name="yes-or-no" value = "Yes" />
                     <label for="Yes">Yes</label>
                 </div>
                 <div class="yes-or-no">
-                    <input  type="radio" id="No" name="yes-or-no" />
+                    <input  type="radio" id="No" name="yes-or-no" value = "No" />
                     <label for="No">No</label>
                 </div>
             </div>
@@ -241,23 +243,29 @@ processForm();
               <option value="sat">Saturday</option>
               <option value="sun">Sunday</option>
               </select>
+
               <br>
               <br>
-            <form action="" method="">
+  
               <label for="time">Select time to donate:</label>
               <select id="time" name="time" class="pftime">
-              <option value="">9:00 AM - 10:30 AM</option>
-              <option value="">10:30 AM - 12:00 PM</option>
-              <option value="">12:00 PM - 1:30 PM</option>
-              <option value="">1:30 PM - 3:00 PM</option>
-              <option value="">3:00 PM - 4:30 PM</option>
+              <option value=" 9:00 AM - 10:30 AM ">9:00 AM - 10:30 AM</option>
+              <option value=" 10:30 AM - 12:00 PM ">10:30 AM - 12:00 PM</option>
+              <option value=" 12:00 PM - 1:30 PM ">12:00 PM - 1:30 PM</option>
+              <option value=" 1:30 PM - 3:00 PM ">1:30 PM - 3:00 PM</option>
+              <option value=" 3:00 PM - 4:30 PM ">3:00 PM - 4:30 PM </option>
             </select>
         <div class="submit-container">
              <button name="submit" class="submit-button" type="submit"><span>Submit</span></button>
         </div>
 
         
-        </form>
+    </form>
+
+
+
+
+
     </section>
 
     

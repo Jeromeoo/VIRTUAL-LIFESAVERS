@@ -1,3 +1,22 @@
+<?php
+// Start the session
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION["userID"])) {
+    // Redirect to the login page if not logged in
+    header("Location: index.php");
+    exit;
+}
+
+// Retrieve user ID from the session
+$userID = $_SESSION["userID"];
+
+// Now you can use $userID in your dashboard page
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,11 +60,24 @@
             <li class="dropdown">
                 <button>MORE ↓</button>
                 <div class="content">
-                    <a href="">PROFILE</a>
+                    <a href="epsave.php">PROFILE</a>
                     <a href="editprofile.php">EDIT PROFILE</a>
-                    <a href="">USER DASHBOARD</a>
+                    <a href="userdashboard-donation.php">USER DASHBOARD</a>
                     <a href="">HOW TO DONATE</a>
-                    <a href="homepage.php">LOG OUT</a>
+                    <!-- HTML code with a logout link -->
+<a href="#" onclick="confirmLogout()">LOGOUT</a>
+
+<!-- JavaScript code -->
+<script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = 'homepage.php'; // Redirect if the user confirms
+        }
+        // If the user cancels, do nothing or provide alternative actions
+    }
+</script>
+
                   </div>
            </li>
                 

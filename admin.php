@@ -1,3 +1,45 @@
+<?php
+// Assuming you have a database connection established
+include 'connection.php';
+// Fetch data from the database
+$result = mysqli_query($conn, "SELECT blood_type FROM donors");
+
+
+// Count total donors
+$donorsQuery = mysqli_query($conn, "SELECT COUNT(donor_id) AS totalDonors FROM donors");
+$totalDonorsResult = mysqli_fetch_assoc($donorsQuery);
+$totalDonors = $totalDonorsResult['totalDonors'];
+
+// Count total requests and approved requests
+$requestsQuery = mysqli_query($conn, "SELECT COUNT(*) AS totalRequests, SUM(CASE WHEN status = 'approved' THEN 1 ELSE 0 END) AS approvedRequests FROM bloodrequests");
+$totalRequestsResult = mysqli_fetch_assoc($requestsQuery);
+$totalRequests = $totalRequestsResult['totalRequests'];
+$approvedRequests = $totalRequestsResult['approvedRequests'];
+
+// Initialize counters
+$bloodTypeCounts = array(
+    'a+' => 0,
+    'b+' => 0,
+    'o+' => 0,
+    'ab+' => 0,
+    'a-' => 0,
+    'b-' => 0,
+    'o-' => 0,
+    'ab-' => 0,
+);
+
+// Count occurrences of each blood type
+while ($row = mysqli_fetch_assoc($result)) {
+    $bloodType = $row['blood_type'];
+    if (isset($bloodTypeCounts[$bloodType])) {
+        $bloodTypeCounts[$bloodType]++;
+    }
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,92 +59,114 @@
 </head>
 <body>
 
-<header class="site-header">
 
 
-<div class="announcement-header">
+
+<header class="announcement-header">
     <img src="css/images/Announcement-Logo.jpg" alt="">
     <p>Online Blood Donation: Blood Bank Management System</p>
     <ul class="admin-ddown"></ul>
     <li class="dropdown">
       <button>Administrator ↓</button>
       <div class="content">
-          <a href="">LOGOUT</a>
+          <!-- HTML code with a logout link -->
+<a href="#" onclick="confirmLogout()">LOGOUT</a>
+
+<!-- JavaScript code -->
+<script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = 'homepage.php'; // Redirect if the user confirms
+        }
+        // If the user cancels, do nothing or provide alternative actions
+    }
+</script>
+
       </div>
     </li>
-</div>
-
-<div class="og-container">
-<div class="sidebar">
-<ul>
-  <li><a href="adminui.html"><i class="fa-solid fa-house"></i>Home</a></li>
-  <li><a href="donors.html"><i class="fa-solid fa-person"></i>Donors</a></li>
-  <li><a href="blooddonations.html"><i class="fa-solid fa-droplet"></i>Blood Donations</a></li>
-  <li><a href="bloodrequests.html"><i class="fa-solid fa-list"></i>Requests</a></li>
-  <li><a href="handedover.html"><i class="fa-solid fa-briefcase"></i>Handed Over</a></li>
-  <li><a href="users.html"><i class="fa-solid fa-user"></i>Users</a></li>
-</ul>
-</div>
+</header>
 
 
 
-<div class="head">
-  <h1>Welcome back, Administrator!</h1> 
-  <h2>Available Blood per group in Liters</h2>
-</div>
 
-<div class="container1">
-  <div class="btype-aplus">
-    <p>A&plus; <i class="fa-solid fa-droplet"></i></p> 
-  </div>
-  
-  <div class="btype-bplus">
-    <p>B&plus; <i class="fa-solid fa-droplet"></i></p> 
-  </div>
 
-  <div class="btype-oplus">
-    <p>O&plus; <i class="fa-solid fa-droplet"></i></p> 
-  </div>
 
-  <div class="btype-abplus">
-    <p>AB&plus; <i class="fa-solid fa-droplet"></i></p> 
-  </div>
-</div>
+<div class="main--content">
 
-<div class="container2">
-  <div class="btype-aminus">
-    <p>A&minus; <i class="fa-solid fa-droplet"></i></p> 
-  </div>
-  
-  <div class="btype-bminus">
-    <p>B&minus; <i class="fa-solid fa-droplet"></i></p> 
-  </div>
 
-  <div class="btype-ominus">
-    <p>O&minus; <i class="fa-solid fa-droplet"></i></p> 
-  </div>
 
-  <div class="btype-abminus">
-    <p>AB&minus; <i class="fa-solid fa-droplet"></i></p> 
-  </div> 
-</div>
+    <div class="sidebar">
+          <ul >
+            <li><a href="admin.php"><i class="fa-solid fa-house"></i>Home</a></li>
+            <li><a href="donors.php"><i class="fa-solid fa-person"></i>Donors</a></li>
+            <li><a href="blooddonations.php"><i class="fa-solid fa-droplet"></i>Blood Donations</a></li>
+            <li><a href="bloodrequests.php"><i class="fa-solid fa-list"></i>Requests</a></li>
+            <li><a href="handedover.php"><i class="fa-solid fa-briefcase"></i>Handed Over</a></li>
+            <li><a href="users.php"><i class="fa-solid fa-user"></i>Users</a></li>
+          </ul>
+      </div>
 
-<div class="container3">
-  <div class="total-donors">
-    <p>Total Donors <span><i class="fa-solid fa-users"></i></span></p> 
-  </div>
-  
-  <div class="tday-donated">
-    <p>Total Donation Today <span><i class="fa-solid fa-square-plus"></i></span></p> 
-  </div>
 
-  <div class="tdayrequests">
-    <p>Today's Requests <span><i class="fa-solid fa-list"></i></span></p> 
-  </div>
 
-  <div class="tdayrequests-approved">
-    <p>Today's Approved Requests <span><i class="fa-solid fa-check"></i></span></p> 
-  </div>
-</div>
+
+      <div class="side-content">
+
+
+                        
+              <div class="head">
+                <h1>Welcome back, Administrator!</h1> 
+                <h2>Available Blood per group in Liters</h2>
+              </div> 
+
+            <div class="container1">
+
+                <?php foreach ($bloodTypeCounts as $type => $count): ?>
+                  <div class="type-blood">
+                      <p><?= strtoupper($type) ?> <i class="fa-solid fa-droplet"></i></p>
+                      <span><?= $count ?></span>
+                  </div>
+              <?php endforeach; ?>
+
+              
+
+                <div class="total-donors">
+        <p>Total Donors <span><?= $totalDonors ?></span></p>
+              </div>
+
+              <div class="total-requests">
+                  <p>Total Requests <span><?= $totalRequests ?></span></p>
+              </div>
+
+              <div class="approved-requests">
+                  <p>Approved Requests <span><?= $approvedRequests ?></span></p>
+              </div>
+              
+
+
+
+            </div>
+
+
+
+
+      </div>
+
+
+
+
 
 </div>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
