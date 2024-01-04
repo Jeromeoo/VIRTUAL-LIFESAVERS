@@ -9,10 +9,10 @@
 </head>
 <body>
     <div class="wrapper">
-        <a href="homepage.php"><i class="fa-solid fa-arrow-left"></i></a>
-        <h2>Profile</h2>
+        <a href="homepage2.php"><i class="fa-solid fa-arrow-left"></i></a>
+        <h2>Your Profile</h2>
        <img src="css/images/default-profile.jpg" class="pic">
-
+        <br><br>
         <label for="Name">
             <a class="save">Name:</a> 
         </label> <br>
@@ -21,16 +21,12 @@
         </label> <br>
         <label for="Birthdate">
             <a class="save">Birthdate:</a>
-        </label>
+        </label> <br>
         <label for="Address">
             <a class="save">Address:</a> 
         </label> <br>
-        <label for="Bloodtype">
-            <a>Blood Type:</a> 
-        </label class="save"> <br>
-        <label for="Donate/Request">
-            <a class="save">Donation/Request History</a>
-        </label> <br>
+        
+        
 
 
 
