@@ -177,7 +177,7 @@ and nurtures our existence.</p>
                 <form action="/" method="post" class="space-y-2">
                     <input type="text" name="g-name" class="g-inp" id="g-name" placeholder='Name' />
                     <input type="email" name="g-email" class="g-inp" id="g-email" placeholder='Email' />
-                    <textarea type="text" name="g-msg" class="g-inp h-40 resize-none" id="g-msg"
+                    <textarea type="text" name="g-msg" class="g-inp h-40 resize-none" id="g-msg" rows="4" cols="50"
                         placeholder='Message...'></textarea>
                     <button type="submit" class='f-btn'>Submit</button>
                 </form>
