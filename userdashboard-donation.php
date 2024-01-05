@@ -23,17 +23,68 @@
     <li class="dropdown">
       <button>User ↓</button>
       <div class="content">
-          <a href="">LOGOUT</a>
+          
+          <a href="#" onclick="confirmLogout()">LOGOUT</a>
+
+<!-- JavaScript code -->
+<script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = 'homepage.php'; // Redirect if the user confirms
+        }
+        // If the user cancels, do nothing or provide alternative actions
+    }
+
+</script>
       </div>
     </li>
 </div>
+<?php
+// Start the session
+session_start();
+
+// Include your database connection file or establish a connection here
+include 'connection.php';
+
+// Query to retrieve information for all users
+$sql = "SELECT i.fname, i.lname, i.birth_date, i.email, i.address 
+        FROM info i";
+
+$result = $conn->query($sql);
+
+// Check if the query was successful
+if ($result && $result->num_rows > 0) {
+    // Output data for each row
+    while ($row = $result->fetch_assoc()) {
+        $fname = $row['fname'];
+        $lname = $row['lname'];
+        $birthdate = $row['birth_date'];
+        $email = $row['email'];
+        $address = $row['address'];
+
+        // Display the user information (you can customize this part as needed)
+        echo "Name: $fname $lname<br>";
+        echo "Birth Date: $birthdate<br>";
+        echo "Email: $email<br>";
+        echo "Address: $address<br>";
+        echo "<hr>";
+    }
+} else {
+    echo "Error retrieving user information: " . $conn->error;
+}
+
+// Close the database connection
+$conn->close();
+?>
 
 <div class="og-container">
 <div class="sidebar">
 <ul>
+<li><a href="homepage2.php"><i class="fa-solid fa-house"></i>Home</a></li>
 
-  <li><a href="userdashboard-donation.html"><i class="fa-solid fa-droplet"></i></i>Your Donations</a></li>
-  <li><a href="userdashboard-request.html"><i class="fa-solid fa-hand-holding-dollar"></i></i></i>Your Requests</a></li>
+  <li><a href="userdashboard-donation.php"><i class="fa-solid fa-droplet"></i></i>Your Donations</a></li>
+  <li><a href="userdashboard-request.php"><i class="fa-solid fa-hand-holding-dollar"></i></i></i>Your Requests</a></li>
   
 </ul>
 </div>

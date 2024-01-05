@@ -3,9 +3,12 @@ include 'connection.php';
 
 if (isset($_POST["Submit"])) {
     $first_name = $_POST["fname"];
+    $last_name = $_POST["lname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
     $confpassword = $_POST["cpassword"];
+    $phone_number = $_POST['phone_number'];
+    $address = $_POST ["address"];
     $birth_date = $_POST["birth_date"];
 
     // Check if the user already exists
@@ -24,7 +27,7 @@ if (isset($_POST["Submit"])) {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
                 // Insert data into the database
-                $insert_query = "INSERT INTO info (fname, email, password, birth_date) VALUES ('$first_name', '$email', '$hashedPassword', '$birth_date')";
+                $insert_query = "INSERT INTO info (fname,lname, email, password, phone_number, address, birth_date) VALUES ('$first_name','$last_name', '$email', '$hashedPassword','$phone_number', '$address' ,'$birth_date')";
                 
                 if (mysqli_query($conn, $insert_query)) {
                     echo "<script>alert('Registered Successfully'); window.location = 'index.php';</script>";
@@ -79,6 +82,10 @@ if (isset($_POST["Submit"])) {
       <div class="input-box">
         <label for="lname">Last Name:</label> 
         <input type="text" placeholder="Enter your last name" name="lname" required>
+      </div> <br>
+      <div class="input-box">
+      <label for="pnumber">Phone Number:</label> 
+        <input type="text" placeholder="Enter your phone number" name="phone_number" required>
       </div> <br>
       <div class="input-box">
         <label for="address">Address:</label> 

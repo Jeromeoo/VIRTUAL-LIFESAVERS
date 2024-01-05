@@ -63,7 +63,7 @@ $userID = $_SESSION["userID"];
                     <a href="epsave.php">PROFILE</a>
                     <a href="editprofile.php">EDIT PROFILE</a>
                     <a href="userdashboard-donation.php">USER DASHBOARD</a>
-                    <a href="">HOW TO DONATE</a>
+                    <a href="htdprograms.php">HOW TO DONATE</a>
                     <!-- HTML code with a logout link -->
 <a href="#" onclick="confirmLogout()">LOGOUT</a>
 

@@ -1,3 +1,24 @@
+<?php
+// Start the session
+session_start();
+
+// Include your database connection file or establish a connection here
+include 'connection.php';
+
+// Query to retrieve information for all users
+$sql = "SELECT i.fname, i.lname,i.phone_number, i.birth_date, i.email, i.address 
+        FROM info i";
+
+$result = $conn->query($sql);
+
+// Check if the query was successful
+
+
+
+
+// Close the database connection
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +44,19 @@
     <li class="dropdown">
       <button>Administrator ↓</button>
       <div class="content">
-          <a href="">LOGOUT</a>
+      <a href="#" onclick="confirmLogout()">LOGOUT</a>
+
+<!-- JavaScript code -->
+<script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = 'homepage.php'; // Redirect if the user confirms
+        }
+        // If the user cancels, do nothing or provide alternative actions
+    }
+</script>
+
       </div>
     </li>
 </div>
@@ -47,22 +80,37 @@
 </div>
 
 <div class="container1">
-  <table>
+<table>
     <tr>
-      <th>Name</th>
-      <th>Blood Type</th>
-      <th>Phone Number</th>
-      <th>Email</th>
-    
-      
+        <th>Name</th>
+        <th>Birth Date</th>
+        <th>Email</th>
+        <th>Phone nummber</th>
+        <th>Address</th>
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-     
-      
-    </tr>
-  </table>
+
+<?php
+if ($result && $result->num_rows > 0) {
+    // Output data for each row
+    while ($row = $result->fetch_assoc()) {
+        $fname = $row['fname'];
+        $lname = $row['lname'];
+        $birthdate = $row['birth_date'];
+        $phone_number = $row['phone_number'];
+        $email = $row['email'];
+        $address = $row['address'];
+
+        echo '<tr>';
+        echo '<td>' . $fname . ' ' . $lname . '</td>';
+        echo '<td>' . $birthdate . '</td>';
+        echo '<td>' . $email . '</td>';
+        echo '<td>' . $phone_number . '</td>';
+        echo '<td>' . $address . '</td>';
+        
+        
+    }
+}   
+?>
+</table>
+
 </div>
