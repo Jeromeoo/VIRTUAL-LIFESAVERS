@@ -35,6 +35,7 @@ html {
 
 body {
 
+
     margin: 0 auto;
     height: 100vh;
     font-family: 'Vollkorn', sans-serif;
@@ -44,22 +45,8 @@ body {
     background-image: url(images/halftone.png);
 
 }
-.site-header {
 
-  transition: box-shadow 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out; 
-}
-header {
- 
-    position: fixed;
-    width: 100%;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    /* box-shadow: 0 1px 6px 0 rgb(32 33 36 / 10%); */
-    
-    
-}
+
 
 .announcement-header {
   background-color: var(--clr-primary-color);
@@ -125,10 +112,15 @@ header {
 }
 
 .sidebar {
-  position: fixed;
+  position: sticky;
+  top: 0;
   left: 0;
+  bottom: 0;
   width: 250px;
-  height: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
   background: var(--clr-primary-color);
   
 }
@@ -156,144 +148,50 @@ ul li:hover a{
   margin-right: 16px;
 }
 
-.head {
-  position: relative;
-  left: 280px;
-  top: 20px;
-}
 
 .container1 {
   width: 1500px;
   position: relative;
-  left: 280px;
-  top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 
 }
 
-.btype-aplus {
+.type-blood {
   margin-top: 20px;
   height: 150px;
   width: 350px;
   background-color: rgb(226, 226, 226);
   border: solid 1px;
+  padding: 16px;
 }
 
-.btype-aplus p{
+.type-blood p{
   font-size: 40px;
-  margin-left: 15px;
+
 }
 
-.btype-bplus {
-  margin-top: 20px;
-  height: 150px;
-  width: 350px;
-  background-color: rgb(226, 226, 226);
-  border: solid 1px;
+.type-blood span {
+  font-size: 40px ;
+  font-weight: var(--fw-semibold);
+
+  color: green;
 }
 
-.btype-bplus p{
-  font-size: 40px;
-  margin-left: 15px;
-}
 
-.btype-oplus {
-  margin-top: 20px;
-  height: 150px;
-  width: 350px;
-  background-color: rgb(226, 226, 226);
-  border: solid 1px;
-}
 
-.btype-oplus p{
-  font-size: 40px;
-  margin-left: 15px;
-}
 
-.btype-abplus {
-  margin-top: 20px;
-  height: 150px;
-  width: 350px;
-  background-color: rgb(226, 226, 226);
-  border: solid 1px;
-}
 
-.btype-abplus p{
-  font-size: 40px;
-  margin-left: 15px;
-}
 
-.container2 {
-  width: 1500px;
-  position: relative;
-  left: 280px;
-  top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
-.btype-aminus {
-  margin-top: 20px;
-  height: 150px;
-  width: 350px;
-  background-color: rgb(226, 226, 226);
-  border: solid 1px;
-  
-}
 
-.btype-aminus p{
-  font-size: 40px;
-  margin-left: 15px;
-}
-
-.btype-bminus {
-  margin-top: 20px;
-  height: 150px;
-  width: 350px;
-  background-color: rgb(226, 226, 226);
-  border: solid 1px;
-}
-
-.btype-bminus p{
-  font-size: 40px;
-  margin-left: 15px;
-}
-
-.btype-ominus {
-  margin-top: 20px;
-  height: 150px;
-  width: 350px;
-  background-color: rgb(226, 226, 226);
-  border: solid 1px;
-}
-
-.btype-ominus p{
-  font-size: 40px;
-  margin-left: 15px;
-}
-
-.btype-abminus {
-  margin-top: 20px;
-  height: 150px;
-  width: 350px;
-  background-color: rgb(226, 226, 226);
-  border: solid 1px;
-}
-
-.btype-abminus p{
-  font-size: 40px;
-  margin-left: 15px;
-  
-}
 
 .container3 {
   width: 1500px;
   position: relative;
-  left: 280px;
-  top: 150px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -324,7 +222,7 @@ ul li:hover a{
   margin-left: 5px;
 }
 
-.tday-donated {
+.total-requests {
   margin-top: 20px;
   height: 150px;
   width: 350px;
@@ -333,23 +231,23 @@ ul li:hover a{
   vertical-align: middle;
 }
 
-.tday-donated p{
+.total-requests p{
   font-size: 20px;
   margin-left: 15px;
   font-weight: bold;
 }
 
-.tday-donated i{
+.total-requests i{
   margin-top: 10px;
   color: 	#880808;
   font-size: 30px;
 }
 
-.tday-donated span {
+.total-requests span {
   margin-left: 5px;
 }
 
-.tdayrequests {
+.approved-requests {
   margin-top: 20px;
   height: 150px;
   width: 350px;
@@ -357,13 +255,13 @@ ul li:hover a{
   border: solid 1px;
 }
 
-.tdayrequests p{
+.approved-requests p{
   font-size: 20px;
   margin-left: 15px;
   font-weight: bold;
 }
 
-.tdayrequests i{
+.approved-requests i{
   margin-top: 10px;
   font-size: 30px;
 }
@@ -403,4 +301,20 @@ ul li:hover a{
 .container2 i{
   color: 	#880808;
 }
+
+
+
+
+
+.main--content {
+  display: flex;
+  
+}
+
+
+
+.side-content {
+  padding: 3.125rem;
+}
+
 

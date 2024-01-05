@@ -1,4 +1,8 @@
 <?php
+
+session_start();
+
+
 include 'connection.php';
 
 if (isset($_POST['submit'])) {
@@ -14,16 +18,18 @@ if (isset($_POST['submit'])) {
         if (isset($row['password'])) {
             $storedPassword = $row['password'];
             $userRole = $row['role']; // Assuming 'role' is the column indicating user role
+            $_SESSION["userID"] = $row["id"];
 
             if (password_verify($password, $storedPassword)) {
                 if ($userRole == 'admin') {
                     // Admin login
                     echo "<script>alert('Admin Login Successfully'); window.location = 'admin.php';</script>";
+                    exit;
                 } else {
                     // Regular user login
-                    echo "<script>alert('User Login Successfully'); window.location = 'homepage2.php';</script>";
+                    header("Location: homepage2.php");
+                    exit;
                 }
-                exit;
             } else {
                 echo "<script>alert('Incorrect password. Please try again.');</script>";
             }
