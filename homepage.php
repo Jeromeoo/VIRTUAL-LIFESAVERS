@@ -75,8 +75,11 @@
           skills. Start a unique learning experience as you become ready to save lives <br>
           in various emergency situations.
 </p>
-  <a href="https://redcross.elearnified.com/">ENROLL NOW!</a>
+<div class="certified-btn">
+<a href="https://redcross.elearnified.com/">ENROLL NOW!</a>
   </div>
+</div>
+  
   
 
 </section>
@@ -140,14 +143,20 @@
         <div class="f-item-con">
             <div class="app-info">
                 <span class='app-name'>
-                    <span class='app-initial'>A</span>shoka
+                    <span class='app-initial'>V</span>irtual Lifesaver
                 </span>
-                <p>We provides you with <strong>Well organised</strong> and <strong>SEO friendly</strong> Website Designs.</p>
+                <p> Every drop of blood <strong>you give is a lifeline
+for someone in need.</strong> The river of life that sustains, protects,
+and nurtures our existence.</p>
+              
+
+
+
             </div>
             <div class="useful-links">
                 <div class="footer-title">Useful Links</div>
                 <ul>
-                    <li>Courses</li>
+                    <li>Home</li>
                     <li>Sign In</li>
                     <li>About Us</li>
                     <li>Become an Affiliate</li>
@@ -174,7 +183,8 @@
                 </form>
             </div>
         </div>
-        <div class='cr-con'>Copyright &copy; 2022 | Made by Ashoka Sec</div>
+
+        <div class='cr-con'>Copyright &copy; 2024 | Made by Group 3</div>
     </footer>
 
 <script>

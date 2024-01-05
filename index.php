@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/8ad42b07a6.js" crossorigin="anonymous"></script>
     
 </head>
 <header class="site-header">
@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
         <h2>Sign In</h2>
         <form action="index.php" method="post">
             <div class="input-box">
-                <input type="text" name="email" placeholder="Email or Username" required> 
+                <input type="text" name="email" placeholder="Email" required>
             </div>
             <div class="input-box">
                 <input type="password" name="password" placeholder="Password" required>
