@@ -1,3 +1,35 @@
+<?php
+// Start the session
+session_start();
+
+
+if (!isset($_SESSION["userID"])) {
+  // Redirect to the login page if not logged in
+  header("Location: index.php");
+  exit;
+}
+
+
+// Include your database connection file or establish a connection here
+include 'connection.php';
+
+$userID = $_SESSION["userID"];
+
+// Query to retrieve information for blood requests of the logged-in user
+$sql = "SELECT i.fname, i.lname, i.blood_type, i.phonenumber, i.donor_id,i.day, i.time
+        FROM donors i
+        WHERE i.id = $userID";
+
+$result = $conn->query($sql);
+// Check if the query was successful
+
+
+
+
+// Close the database connection
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,50 +72,15 @@
       </div>
     </li>
 </div>
-<?php
-// Start the session
-session_start();
 
-// Include your database connection file or establish a connection here
-include 'connection.php';
-
-// Query to retrieve information for all users
-$sql = "SELECT i.fname, i.lname, i.birth_date, i.email, i.address 
-        FROM info i";
-
-$result = $conn->query($sql);
-
-// Check if the query was successful
-if ($result && $result->num_rows > 0) {
-    // Output data for each row
-    while ($row = $result->fetch_assoc()) {
-        $fname = $row['fname'];
-        $lname = $row['lname'];
-        $birthdate = $row['birth_date'];
-        $email = $row['email'];
-        $address = $row['address'];
-
-        // Display the user information (you can customize this part as needed)
-        echo "Name: $fname $lname<br>";
-        echo "Birth Date: $birthdate<br>";
-        echo "Email: $email<br>";
-        echo "Address: $address<br>";
-        echo "<hr>";
-    }
-} else {
-    echo "Error retrieving user information: " . $conn->error;
-}
-
-// Close the database connection
-$conn->close();
-?>
 
 <div class="og-container">
 <div class="sidebar">
 <ul>
 
-  <li><a href="userdashboard-donation.html"><i class="fa-solid fa-droplet"></i></i>Your Donations</a></li>
-  <li><a href="userdashboard-request.html"><i class="fa-solid fa-hand-holding-dollar"></i></i></i>Your Requests</a></li>
+<li><a href="homepage2.php"><i class="fa-solid fa-house"></i>Home</a></li>
+  <li><a href="userdashboard-donation.php"><i class="fa-solid fa-droplet"></i></i>Your Donations</a></li>
+  <li><a href="userdashboard-request.php"><i class="fa-solid fa-hand-holding-dollar"></i></i></i>Your Requests</a></li>
   
 </ul>
 </div>
@@ -99,49 +96,52 @@ $conn->close();
     <tr>
       <th>Name</th>
       <th>Blood Type</th>
-      <th>Blood Type Donated</th>
+      <th>Phone Number</th>
       <th>Date & Time <br>
         MM/DD/YY - HH/MM/AM-PM
       </th>
-      <th></th>
+     
     </tr>
     <tr>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
-      <td><button class="cancel-btn">Cancel</button>
-        <button class="accept-btn">Accept</button></td>
+     
     </tr>
+
+
+    <?php
+if ($result && $result->num_rows > 0) {
+  // Output data for each row
+  while ($row = $result->fetch_assoc()) {
+      $id = $row['id'];
+      $requesterName = $row['requester_name'];
+      $bloodType = $row['request_blood'];
+      $id = $row['id'];
+      $phoneNumber = $row['contact_number'];
+      $message = $row['message'];
+     
+
+      echo '<tr>';
+      echo '<td>' . $id . '</td>';
+      echo '<td>' . $requesterName . '</td>';
+      echo '<td>' . $bloodType . '</td>';
+      echo '<td>' . $phoneNumber . '</td>';
+      echo '<td>' . $message . '</td>';
+      
+      echo '<td>
+            
+            </td>';
+      echo '</tr>';
+  }
+}
+?>
+
+
+
+
   </table>
 
 </div>
 
-<br> 
-
-<div class="head2">
-  <h1>USER'S PAST DONATIONS</h1> 
-</div>
-
-<div class="container2">
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Blood Type</th>
-      <th>Blood Type Donated</th>
-      <th>Date & Time <br>
-        MM/DD/YY - HH/MM/AM-PM
-      </th>
-      <th></th>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>
-        <p class="completed">COMPLETED</p>
-    </tr>
-  </table>
-
-</div>

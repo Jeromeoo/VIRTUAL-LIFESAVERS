@@ -59,7 +59,6 @@ $userID = $_SESSION["userID"];
                 <button>MORE ↓</button>
                 <div class="content">
                     <a href="epsave.php">PROFILE</a>
-                    <a href="editprofile.php">EDIT PROFILE</a>
                     <a href="userdashboard-donation.php">USER DASHBOARD</a>
                     <a href="htdprograms.php">HOW TO DONATE</a>
                     <!-- HTML code with a logout link -->

@@ -1,6 +1,15 @@
 <?php
 include 'connection.php';
 
+session_start();
+
+if (!isset($_SESSION["userID"])) {
+    // Redirect to the login page if not logged in
+    header("Location: index.php");
+    exit;
+}
+
+
 // Process the form data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fname = isset($_POST["requester_name"]) ? $_POST["requester_name"] : '';
@@ -11,9 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $purpose = isset($_POST["purpose"]) ? $_POST["purpose"] : '';
     $message = isset($_POST["message"]) ? $_POST["message"] : '';
 
+
+    $userID = $_SESSION["userID"];
+
     // Insert data into the database
-    $sql = "INSERT INTO bloodrequests (requester_name, email, contact_number, blood, request_blood, purpose, message) 
-            VALUES ('$fname', '$email', '$contactnumber', '$blood', '$request_blood', '$purpose', '$message')";
+    $sql = "INSERT INTO bloodrequests ( requester_name, id, email, contact_number, blood, request_blood, purpose, message) 
+        VALUES ( '$fname', '$userID', '$email', '$contactnumber', '$blood', '$request_blood', '$purpose', '$message')";
     echo "SQL Query: " . $sql . "<br>";
 
     if ($conn->query($sql) === TRUE) {

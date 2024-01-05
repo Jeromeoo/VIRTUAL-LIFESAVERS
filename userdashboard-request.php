@@ -1,3 +1,36 @@
+<?php
+// Start the session
+session_start();
+
+
+if (!isset($_SESSION["userID"])) {
+  // Redirect to the login page if not logged in
+  header("Location: index.php");
+  exit;
+}
+
+
+// Include your database connection file or establish a connection here
+include 'connection.php';
+
+$userID = $_SESSION["userID"];
+
+// Query to retrieve information for blood requests of the logged-in user
+$sql = "SELECT i.requester_name, i.request_blood, i.contact_number, i.message, i.id, i.status
+        FROM bloodrequests i
+        WHERE i.id = $userID";
+
+$result = $conn->query($sql);
+// Check if the query was successful
+
+
+
+
+// Close the database connection
+$conn->close();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,51 +93,50 @@
 <div class="container1">
   <table>
     <tr>
-      <th>Name</th>
+    <th>id</th>
+    <th>Name</th>
       <th>Blood Type</th>
-      <th>Blood Type Requested</th>
+      <th>Phone Number</th>
       <th>Date & Time <br>
         MM/DD/YY - HH/MM/AM-PM
       </th>
-      <th></th>
+      <th>Message</th>
+   
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button class="cancel-btn">Cancel</button>
-        <button class="accept-btn">Accept</button></td>
-    </tr>
-  </table>
+   
 
-</div>
 
-<br> 
+    <?php
+if ($result && $result->num_rows > 0) {
+    // Output data for each row
+    while ($row = $result->fetch_assoc()) {
+        $id = $row['id'];
+        $requesterName = $row['requester_name'];
+        $bloodType = $row['request_blood'];
+        $id = $row['id'];
+        $phoneNumber = $row['contact_number'];
+        $message = $row['message'];
+       
 
-<div class="head2">
-  <h1>USER'S PAST REQUESTS</h1> 
-</div>
+        echo '<tr>';
+        echo '<td>' . $id . '</td>';
+        echo '<td>' . $requesterName . '</td>';
+        echo '<td>' . $bloodType . '</td>';
+        echo '<td>' . $phoneNumber . '</td>';
+        echo '<td>' . $message . '</td>';
+        
+        echo '<td>
+              
+              </td>';
+        echo '</tr>';
+    }
+}
+?>
 
-<div class="container2">
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Blood Type</th>
-      <th>Blood Type Requested</th>
-      <th>Date & Time <br>
-        MM/DD/YY - HH/MM/AM-PM
-      </th>
-      <th></th>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>
-        <p class="completed">COMPLETED</p>
-    </tr>
+
+
+
+
   </table>
 
 </div>
