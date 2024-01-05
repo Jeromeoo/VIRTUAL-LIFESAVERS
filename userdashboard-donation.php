@@ -81,10 +81,9 @@ $conn->close();
 <div class="og-container">
 <div class="sidebar">
 <ul>
-<li><a href="homepage2.php"><i class="fa-solid fa-house"></i>Home</a></li>
 
-  <li><a href="userdashboard-donation.php"><i class="fa-solid fa-droplet"></i></i>Your Donations</a></li>
-  <li><a href="userdashboard-request.php"><i class="fa-solid fa-hand-holding-dollar"></i></i></i>Your Requests</a></li>
+  <li><a href="userdashboard-donation.html"><i class="fa-solid fa-droplet"></i></i>Your Donations</a></li>
+  <li><a href="userdashboard-request.html"><i class="fa-solid fa-hand-holding-dollar"></i></i></i>Your Requests</a></li>
   
 </ul>
 </div>

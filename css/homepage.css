@@ -273,7 +273,7 @@ nav {
 /** footer **/
 
 :root{
-    --theme-col: #2d4bf0;
+    --theme-col: #820000;
 }
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
