@@ -221,18 +221,3 @@ form h4 {
   form .text h4 a:hover{
     text-decoration: underline;
   }
-
-.icon {
-    position: absolute;
-    left: 15px;
-    top: 0;
-    font-size: 25px;
-    color:#000;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-

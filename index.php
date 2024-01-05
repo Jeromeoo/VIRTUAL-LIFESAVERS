@@ -92,8 +92,9 @@ if (isset($_POST['submit'])) {
             <div class="text">
                 <h4>No account yet? <a href="signup_process.php">Sign up now</a></h4>
             </div>
+</div>
         </form>
-    </div>
+    
 </body>
 </html>
 
