@@ -90,6 +90,7 @@ $conn->close();
     </tr>
 
 <?php
+ 
 if ($result && $result->num_rows > 0) {
     // Output data for each row
     while ($row = $result->fetch_assoc()) {
