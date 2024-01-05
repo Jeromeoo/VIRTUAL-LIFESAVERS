@@ -1,3 +1,27 @@
+
+
+<?php
+// Start the session
+session_start();
+
+// Include your database connection file or establish a connection here
+include 'connection.php';
+
+// Query to retrieve information for all users
+$sql = "SELECT i.fname, i.lname,i.phone_number, i.birth_date, i.email, i.address 
+        FROM info i";
+
+$result = $conn->query($sql);
+
+// Check if the query was successful
+
+
+
+
+// Close the database connection
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +47,18 @@
     <li class="dropdown">
       <button>Administrator ↓</button>
       <div class="content">
-          <a href="">LOGOUT</a>
+      <a href="#" onclick="confirmLogout()">LOGOUT</a>
+
+<!-- JavaScript code -->
+<script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = 'homepage.php'; // Redirect if the user confirms
+        }
+        // If the user cancels, do nothing or provide alternative actions
+    }
+</script>
       </div>
     </li>
 </div>

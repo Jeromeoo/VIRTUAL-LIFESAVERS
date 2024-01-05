@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,8 +56,8 @@
           
               <div class="donate-btn">
           
-          <a href="BDform.php">DONATE BLOOD NOW</a>
-              <a href="requestform.php">REQUEST BLOOD NOW</a>
+          <a href="index.php">DONATE BLOOD NOW</a>
+              <a href="index.php">REQUEST BLOOD NOW</a>
           </div>
 
             </div>

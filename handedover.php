@@ -23,7 +23,18 @@
     <li class="dropdown">
       <button>Administrator ↓</button>
       <div class="content">
-          <a href="">LOGOUT</a>
+      <a href="#" onclick="confirmLogout()">LOGOUT</a>
+
+<!-- JavaScript code -->
+<script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = 'homepage.php'; // Redirect if the user confirms
+        }
+        // If the user cancels, do nothing or provide alternative actions
+    }
+</script>
       </div>
     </li>
 </div>
