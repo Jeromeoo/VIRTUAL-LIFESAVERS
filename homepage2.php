@@ -99,8 +99,8 @@ $userID = $_SESSION["userID"];
           
               <div class="donate-btn2">
           
-                  <a href="BDform.php">DONATE BLOOD NOW</a> 
-                  <a href="requestform.php">REQUEST BLOOD NOW</a>
+                  <a href="confirmation-donate.php">DONATE BLOOD NOW</a> 
+                  <a href="confirmation-request.php">REQUEST BLOOD NOW</a>
               </div>
           
            
