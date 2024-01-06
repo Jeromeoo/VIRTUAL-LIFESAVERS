@@ -77,9 +77,11 @@
           skills. Start a unique learning experience as you become ready to save lives <br>
           in various emergency situations.
 </p>
-<div class="certified-btn">
+<button class="certified-btn">
 <a href="https://redcross.elearnified.com/">ENROLL NOW!</a>
-  </div>
+</button>
+
+  
 </div>
   
   
@@ -139,6 +141,20 @@
   </div>
 </div>
 
+</section>
+
+<section>
+    <div class="join-us">
+    <h1>Save Lives. Join Us Virtual Lifesaver</h1>
+    <p>Join us and be part of something bigger! <br>
+    Together, we're making a positive impact. <br>
+        Your passion matters here. Join now for a world of change!</p>
+    <button class="join-btn">
+        <a href="">JOIN US</a>
+    </button>
+
+    </div>
+    
 </section>
 
 <footer>

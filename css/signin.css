@@ -221,3 +221,8 @@ form h4 {
   form .text h4 a:hover{
     text-decoration: underline;
   }
+ 
+  .certified-btn {
+    border: 1px solid red;
+
+  }
