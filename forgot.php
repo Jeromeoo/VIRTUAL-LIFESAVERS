@@ -1,44 +1,71 @@
 <?php
 include 'connection.php';
 
-if (isset($_POST['submit'])) {
-    $username = $_POST['email'];
+require 'config.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-    // Check if the email exists in your database
-    $sql = "SELECT * FROM info WHERE email = '$username'";
-    $result = mysqli_query($conn, $sql);
-    $count = mysqli_num_rows($result);
+require './vendor/autoload.php';
 
-    if ($count == 1) {
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the submitted email
+    $email = $_POST['email'];
 
-        if (isset($_POST['new_password']) && isset($_POST['confirm_password'])) {
-            $newPassword = $_POST['new_password'];
-            $confirmPassword = $_POST['confirm_password'];
+    // Validate the email (you may want to add more validation)
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Generate a unique token (you can use a library for this)
+        $token = uniqid();
 
-            if ($newPassword === $confirmPassword) {
-                // Passwords match, update the password in the database
-                $hashedNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-                $updatePasswordSql = "UPDATE info SET password = '$hashedNewPassword' WHERE email = '$username'";
-                if (mysqli_query($conn, $updatePasswordSql)) {
-                    // Password changed successfully, show the success message
-                    echo "<script>alert('Password Successfully changed!');window.location = 'index.php';</script>";
+        // Store the token in the database along with the user's email
+        // This is a simplified example; you should secure this process
+        // and probably include an expiration time for the token
+        $sql = "UPDATE info SET reset_token = '$token' WHERE email = '$email'";
+        
+        // Execute the SQL query and handle errors
+        if ($conn->query($sql) === TRUE) {
+            // Construct the reset link
+            $resetLink = "http://localhost/VIRTUAL-LIFESAVERS/reset-password.php?token=$token";
 
-                } else {
-                    echo "<script>alert('An error occurred while changing the password.');</script>";
-                }
-            } else {
-                echo "<script>alert('New password and confirm password do not match.');</script>";
+            // Send the email with the reset link
+            $mail = new PHPMailer(true);
+
+            try {
+                // Server settings
+                $mail->SMTPDebug = SMTP::DEBUG_OFF; // Set to DEBUG_SERVER for debugging
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com'; // Your SMTP server
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+                $mail->Username = SMTP_USERNAME; // Use the constant
+                $mail->Password = SMTP_PASSWORD; // Use the constant
+
+                // Recipients
+                $mail->setFrom(SMTP_USERNAME, 'Reset Password Link');
+                $mail->addAddress($email);
+
+                // Content
+                $mail->isHTML(true);
+                $mail->Subject = 'Password Reset';
+                $mail->Body = "Click the following link to reset your password: <a href='$resetLink'>$resetLink</a>";
+
+                $mail->send();
+
+               echo '<script>alert("Password reset link sent successfully!");</script>';
+            } catch (Exception $e) {
+                echo "Error sending email: {$mail->ErrorInfo}";
             }
         } else {
-            // Display a message indicating that the user should enter a new password
-            echo "<script>alert('Please enter a new password.');</script>";
+            // If there is an error with the SQL query
+             echo '<script>alert("Error updating reset token: ' . $conn->error . '");</script>';
         }
     } else {
-        echo "<script>alert('Username is not a valid email address.');</script>";
+        echo "Invalid email format";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,17 +99,11 @@ if (isset($_POST['submit'])) {
         <form action="forgot.php" method="post">
             <h2>Forgot Password?</h2>
             <div class="input-box">
-                <input type="text" name="email" placeholder="Enter your email" required>
+                <input type="email" name="email" placeholder="Enter your email" required>
                 <i class='bx bx-user'></i>
             </div>
-            <div class="input-box">
-                <input type="password" name="new_password" placeholder="New Password">
-                <i class='bx bxs-lock-alt'></i>
-            </div>
-            <div class="input-box">
-                <input type="password" name="confirm_password" placeholder="Confirm Password">
-                <i class='bx bxs-lock-alt'></i>
-</div>
+        
+         
 
             <div class="input-box button">
         <input type="submit" name="Submit" value="Submit">

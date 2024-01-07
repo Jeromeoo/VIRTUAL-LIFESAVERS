@@ -27,7 +27,7 @@ if (isset($_POST["Submit"])) {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
                 // Insert data into the database
-                $insert_query = "INSERT INTO info (fname,lname, email, password, phone_number, address, birth_date) VALUES ('$first_name','$last_name', '$email', '$hashedPassword','$phone_number', '$address' ,'$birth_date')";
+                $insert_query = "INSERT INTO info (fname,lname, email, password, phone_number, address, birth_date, role) VALUES ('$first_name','$last_name', '$email', '$hashedPassword','$phone_number', '$address' ,'$birth_date' , 'user')";
                 
                 if (mysqli_query($conn, $insert_query)) {
                     echo "<script>alert('Registered Successfully'); window.location = 'index.php';</script>";

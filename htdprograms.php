@@ -35,17 +35,25 @@
     <img src="css/images/Logo.png" alt="">
 
     <ul class="nav_list2">
-    <li class="nav_list-item"><a href="homepage.php" class="nav_link2">HOME</a></li>
-    <li class="nav_list-item"><a href="about.php" class="nav_link2">ABOUT</a></li>
-    <li class="nav_list-item"><a href="contact.php" class="nav_link2">CONTACT</a></li>
+    <li class="nav_list-item"><a href="homepage2.php" class="nav_link2">HOME</a></li>
             <li class="dropdown">
-                <button>MORE ↓</button>
+                <button>MORE ↓</button> 
                 <div class="content">
-                    <a href="">PROFILE</a>
-                    <a href="editprofile.php">EDIT PROFILE</a>
-                    <a href="">USER DASHBOARD</a>
-                    <a href="">HOW TO DONATE</a>
-                    <a href="homepage.php">LOG OUT</a>
+                <a href="epsave.php">PROFILE</a>
+                    <a href="userdashboard-donation.php">USER DASHBOARD</a>
+                    <a href="htdprograms.php">HOW TO DONATE</a>
+                    <a href="#" onclick="confirmLogout()">LOGOUT</a>
+
+<!-- JavaScript code -->
+<script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = 'homepage.php'; // Redirect if the user confirms
+        }
+        // If the user cancels, do nothing or provide alternative actions
+    }
+</script>
                   </div>
                   
         </nav>

@@ -1,31 +1,32 @@
 <?php
-// Start the session
-session_start();
-
 // Include your database connection file or establish a connection here
 include 'connection.php';
 
-// Query to retrieve information for all users
-$sql = "SELECT i.fname, i.lname,i.phone_number, i.birth_date, i.email, i.address 
-        FROM info i";
+// Query to retrieve information for all users, excluding those with the role 'admin'
+$sql = "SELECT i.id, i.fname, i.lname, i.phone_number, i.birth_date, i.email, i.address 
+        FROM info i 
+        WHERE i.role <> 'admin'";
 
 $result = $conn->query($sql);
 
 // Check if the query was successful
-
-
+if (!$result) {
+    die("Error fetching data: " . $conn->error);
+}
 
 
 // Close the database connection
 $conn->close();
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
-
 
     <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -35,6 +36,7 @@ $conn->close();
 <body>
 
 <header class="site-header">
+
 
 
 <div class="announcement-header">
@@ -74,44 +76,67 @@ $conn->close();
 </div>
 
 
-
 <div class="head">
   <h1>USER'S INFORMATION</h1> 
 </div>
 
+
+<!-- Your existing HTML code -->
+
 <div class="container1">
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Birth Date</th>
-        <th>Email</th>
-        <th>Phone nummber</th>
-        <th>Address</th>
-    </tr>
+        <table id="myTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Birth Date</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            if ($result && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $userId = $row['id'];
+                    $fname = $row['fname'];
+                    $lname = $row['lname'];
+                    $birthdate = $row['birth_date'];
+                    $phone_number = $row['phone_number'];
+                    $email = $row['email'];
+                    $address = $row['address'];
 
-<?php
- 
-if ($result && $result->num_rows > 0) {
-    // Output data for each row
-    while ($row = $result->fetch_assoc()) {
-        $fname = $row['fname'];
-        $lname = $row['lname'];
-        $birthdate = $row['birth_date'];
-        $phone_number = $row['phone_number'];
-        $email = $row['email'];
-        $address = $row['address'];
+                    echo '<tr>';
+                    echo '<td>' . $userId . '</td>';
+                    echo '<td>' . $fname . ' ' . $lname . '</td>';
+                    echo '<td>' . $birthdate . '</td>';
+                    echo '<td>' . $email . '</td>';
+                    echo '<td>' . $phone_number . '</td>';
+                    echo '<td>' . $address . '</td>';
+                    echo '<td><button onclick="confirmDelete(' . $userId . ')">Delete</button></td>';
+                    echo '</tr>';
+                }
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
 
-        echo '<tr>';
-        echo '<td>' . $fname . ' ' . $lname . '</td>';
-        echo '<td>' . $birthdate . '</td>';
-        echo '<td>' . $email . '</td>';
-        echo '<td>' . $phone_number . '</td>';
-        echo '<td>' . $address . '</td>';
-        
-        
+    <!-- Include DataTables JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <!-- Your existing JavaScript code -->
+    <script>
+    
+
+    function confirmDelete(userId) {
+        var confirmDelete = confirm("Are you sure you want to delete this user?");
+        if (confirmDelete) {
+            window.location.href = 'deleteuser.php?user_id=' + userId;
+        }
+        // If the user cancels, do nothing or provide alternative actions
     }
-}   
-?>
-</table>
-
-</div>
+</script>

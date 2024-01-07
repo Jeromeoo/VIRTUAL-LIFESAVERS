@@ -1,5 +1,4 @@
 <?php
-
 include 'connection.php';
 
 function processForm() {
@@ -14,7 +13,7 @@ function processForm() {
     // Check if the form is submitted
     if (isset($_POST['submit'])) {
         // Retrieve form data
-        $bloodType = $_POST['blood_type'];
+        $blood_type = $_POST['blood_type'];
         $firstName = $_POST['fname'];
         $middleName = $_POST['mname'];
         $lastName = $_POST['lname'];
@@ -36,31 +35,29 @@ function processForm() {
         $donationDay = $_POST['day'];
         $donationTime = $_POST['time'];
 
+        $stmt = $conn->prepare("INSERT INTO donors (blood_type, fname, mname, lname, house_number, street, barangay, zipcode, birthdate, email, occupation, phonenumber, gender, weight, pulse, bp, temp, donated_previously, last_donation_date, day, time)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        // Validate and sanitize the data (add your validation logic here)
+        // Bind parameters
+        $stmt->bind_param("ssssssssssssssssssss", $blood_type, $firstName, $middleName, $lastName, $houseNumber, $street, $barangay, $zipcode, $birthdate, $email, $occupation, $phoneNumber, $gender, $weight, $pulse, $bloodPressure, $temperature, $donatedPreviously, $lastDonationDate, $donationDay, $donationTime);
 
-        // Your SQL query to insert data into the database
-        $sql = "INSERT INTO donors (blood_type, fname, mname, lname, house_number, street, barangay, zipcode, birthdate, email, occupation, phonenumber, gender, weight, pulse, bp, temp, donated_previously, last_donation_date,day,time)
-                VALUES ('$bloodType', '$firstName', '$middleName', '$lastName', '$houseNumber', '$street', '$barangay', '$zipcode', '$birthdate', '$email', '$occupation', '$phoneNumber', '$gender', '$weight', '$pulse', '$bloodPressure', '$temperature', '$donatedPreviously', '$lastDonationDate',' $donationDay','$donationTime')";
-
-        // Debugging statement
-        echo "SQL Query: " . $sql . "<br>";
-
-        if ($conn->query($sql) === TRUE) {
+        if ($stmt->execute()) {
             echo "<script>alert('Donation Sent!'); window.location = 'homepage2.php';</script>";
-            exit(); // Ensure that the script stops execution after the redirection
+            exit();
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $stmt->error;
         }
-        // Close the database connection
-        $conn->close();
+
+        // Close the statement
+        $stmt->close();
     }
 }
 
 // Call the function to process the form data
 processForm();
-
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -71,12 +68,7 @@ processForm();
     <title>Blood Donation Form | Virtual Lifesaver</title>
     <link rel="stylesheet" href="css/bdform.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <header class="site-header">
-    <div class="announcement">
-        <img src="css/images/Announcement-Logo.jpg" alt="">
-        <p>Online Blood Donation: Share, Save, Support</p>
-        <p></p>
-    </div>
+    
 </head>
 <body>
     <section class="container">

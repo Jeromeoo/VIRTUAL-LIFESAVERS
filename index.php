@@ -1,45 +1,163 @@
-<?php
 
-session_start();
+
+<?php
 
 
 include 'connection.php';
+require 'config.php';
+require './vendor/autoload.php';
 
-if (isset($_POST['submit'])) {
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+
+
+
+
+
+
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    // Fetch user input
     $username = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM info WHERE email = '$username'";
-    $result = mysqli_query($conn, $sql);
-    $count = mysqli_num_rows($result);
+    /// Prepare and execute the SQL statement
+        $stmt = $conn->prepare("SELECT id, email, password, Role, OTP, OTP_Expiration, OTP_activated FROM info WHERE email = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->store_result();
 
-    if ($count == 1) {
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        if (isset($row['password'])) {
-            $storedPassword = $row['password'];
-            $userRole = $row['role']; // Assuming 'role' is the column indicating user role
-            $_SESSION["userID"] = $row["id"];
 
-            if (password_verify($password, $storedPassword)) {
-                if ($userRole == 'admin') {
-                    // Admin login
-                    echo "<script>alert('Admin Login Successfully'); window.location = 'admin.php';</script>";
-                    exit;
-                } else {
-                    // Regular user login
-                    header("Location: homepage2.php");
-                    exit;
+    // Check if a user with the given username exists
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($userId, $dbUsername, $dbPassword,  $userRole, $otpFromDb, $otpExpiration, $otpActivated);
+
+
+        $stmt->fetch();
+
+        // Verify the entered password against the hashed password in the database
+        if (password_verify($password, $dbPassword)) {
+            // Password is correct, set up a session or redirect based on the role
+            session_start();
+      
+            $_SESSION["userID"] = $userId;
+            $_SESSION['email'] = $dbUsername;
+         
+                
+
+            if ($otpExpiration > date('Y-m-d H:i:s')) {
+                // OTP is still valid, proceed with the login
+                if ($otpActivated == 0) {
+                    // Generate a random OTP
+                    $otp = mt_rand(100000, 999999);
+
+                    // Set OTP, its expiration time, and mark OTP as not activated in the database
+                    $otpExpiration = date('Y-m-d H:i:s', strtotime('+7 days')); // Change the expiration time as needed
+
+                    $updateStmt = $conn->prepare("UPDATE info SET OTP = ?, OTP_Expiration = ?, OTP_activated = 0 WHERE id = ?");
+                    $updateStmt->bind_param("ssi", $otp, $otpExpiration, $userId);
+                    $updateStmt->execute();
+                    $updateStmt->close();
+
+                    // Send OTP to the user's email using PHPMailer
+                    $mail = new PHPMailer(true);
+
+                    try {
+
+                        $mail->isSMTP();
+                        $mail->Host = 'smtp.gmail.com'; // Your SMTP server
+                        $mail->SMTPAuth = true;
+                        $mail->SMTPSecure = 'tls';
+                        $mail->Port = 587;
+                        $mail->Username = SMTP_USERNAME; // Use the constant
+                        $mail->Password = SMTP_PASSWORD; // Use the constant
+    
+                            $mail->setFrom(SMTP_USERNAME,  'OTP VERIFICATION');
+                            $mail->addAddress($dbUsername); // User's email address
+    
+                            $mail->isHTML(true);
+                            $mail->Subject = 'OTP for Login';
+                            $mail->Body    = 'Your OTP is: ' . $otp;
+    
+                            $mail->send();
+      
+
+                        // Redirect the user to OTP.php
+                        header("Location: otp.php");
+                        exit();
+                    } catch (Exception $e) {
+                        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                    }
                 }
             } else {
-                echo "<script>alert('Incorrect password. Please try again.');</script>";
+                // OTP has expired, send a new OTP
+                echo "<script>alert('OTP has expired. Sending a new OTP.'); window.location.href = 'otp.php';</script>";
+
+                // Generate a random OTP
+                $otp = mt_rand(100000, 999999);
+
+                // Set OTP, its expiration time, and mark OTP as not activated in the database
+                $otpExpiration = date('Y-m-d H:i:s', strtotime('+7 days'));
+
+                $updateStmt = $conn->prepare("UPDATE users SET OTP = ?, OTP_Expiration = ?, OTP_activated = 0 WHERE user_id = ?");
+                $updateStmt->bind_param("ssi", $otp, $otpExpiration, $userId);
+                $updateStmt->execute();
+                $updateStmt->close();
+
+                // Send OTP to the user's email using PHPMailer
+                $mail = new PHPMailer(true);
+
+                try {
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com'; // Your SMTP server
+                    $mail->SMTPAuth = true;
+                    $mail->SMTPSecure = 'tls';
+                    $mail->Port = 587;
+                    $mail->Username = SMTP_USERNAME; // Use the constant
+                    $mail->Password = SMTP_PASSWORD; // Use the constant
+
+                        $mail->setFrom(SMTP_USERNAME,  'OTP VERIFICATION');
+                        $mail->addAddress($dbUsername); // User's email address
+
+                        $mail->isHTML(true);
+                        $mail->Subject = 'OTP for Login';
+                        $mail->Body    = 'Your OTP is: ' . $otp;
+
+                        $mail->send();
+
+
+                    // Redirect the user to OTP.php
+                    header("Location: otp.php");
+                    exit();
+                } catch (Exception $e) {
+                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
             }
+
+            if ($userRole == 'admin') {
+                echo "<script>alert('Admin login successfully'); window.location.href = 'admin.php';</script>";
+            } else {
+                echo "<script>alert('User login successfully'); window.location.href = 'homepage2.php';</script>";
+            }
+            exit();
         } else {
-            echo "<script>alert('Password not found for this user.');</script>";
+            // Password is incorrect
+            echo "<script>alert('Incorrect password. Please try again.');</script>";
         }
     } else {
-        echo "<script>alert('Username is not a valid email address.');</script>";
+        // User with the given username does not exist
+        echo "<script>alert('User not found. Please check your username.');</script>";
     }
+
+    // Close the statement and database connection
+    $stmt->close();
+    $conn->close();
 }
+
 ?>
 
 
