@@ -93,7 +93,7 @@ $conn->close();
                 <th>Email</th>
                 <th>Phone number</th>
                 <th>Address</th>
-                <th>Actions</th>
+              
             </tr>
             </thead>
             <tbody>
@@ -115,7 +115,7 @@ $conn->close();
                     echo '<td>' . $email . '</td>';
                     echo '<td>' . $phone_number . '</td>';
                     echo '<td>' . $address . '</td>';
-                    echo '<td><button onclick="confirmDelete(' . $userId . ')">Delete</button></td>';
+                   
                     echo '</tr>';
                 }
             }

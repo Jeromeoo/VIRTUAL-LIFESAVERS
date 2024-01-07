@@ -6,9 +6,28 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch data from the database
-$sql = "SELECT * FROM bloodrequests";
+
+
+$sql = "SELECT * FROM bloodrequests WHERE status <> 'Completed'";
 $result = $conn->query($sql);
+
+
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $requestId = $_POST['requestId'];
+    $newStatus = $_POST['status'];
+
+    // Update the status in the database
+    $updateSql = "UPDATE bloodrequests SET status = '$newStatus' WHERE request_id = '$requestId'";
+    if ($conn->query($updateSql) === TRUE) {
+        header("Location: bloodrequests.php"); // Redirect back to your page
+        exit();
+    } else {
+        echo "Error updating status: " . $conn->error;
+    }
+}
+
 
 ?>
 
@@ -77,6 +96,7 @@ $result = $conn->query($sql);
             <div class="container1">
         <table>
             <tr>
+            <th>Request ID</th>
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Blood Type</th>
@@ -85,8 +105,7 @@ $result = $conn->query($sql);
                 <th>Email</th>
                 <th>Status</th>
                 <th>Action</th>
-                <th></th>
-                <th></th>
+                
             </tr>
 
             <?php
@@ -94,6 +113,7 @@ $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
+                    echo "<td>" . $row['request_id'] . "</td>";
                     echo "<td>" . $row['id'] . "</td>";
                     echo "<td>" . $row['requester_name'] . "</td>";
                     echo "<td>" . $row['blood'] . "</td>";
@@ -103,9 +123,14 @@ $result = $conn->query($sql);
                     echo "<td>" . $row['status'] . "</td>";
 
                     echo "<td>";
-                    echo "<button class='cancel-btn'>Cancel</button>";
-                    echo "<button class='accept-btn'>Accept</button>";
+                    echo "<form method='post' action=''>";
+                    echo "<input type='hidden' name='requestId' value='" . $row['request_id'] . "'>";
+                    echo "<button type='submit' name='status' class='view-button' value='Completed'>Accept</button>";
+                    echo "<button type='submit' name='status'  class= 'delete-button' value='Cancelled'>Cancel</button>";
+                    echo "</form>";
                     echo "</td>";
+
+
                     echo "</tr>";
                 }
             } else {

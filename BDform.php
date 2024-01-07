@@ -1,61 +1,76 @@
-<?php
-include 'connection.php';
+    <?php
+    include 'connection.php';
+    
 
-function processForm() {
-    // Include the connection variable
-    global $conn;
+    // Start the session
+session_start();
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
-    // Check if the form is submitted
-    if (isset($_POST['submit'])) {
-        // Retrieve form data
-        $blood_type = $_POST['blood_type'];
-        $firstName = $_POST['fname'];
-        $middleName = $_POST['mname'];
-        $lastName = $_POST['lname'];
-        $houseNumber = $_POST['house_number'];
-        $street = $_POST['street'];
-        $barangay = $_POST['barangay'];
-        $zipcode = $_POST['zipcode'];
-        $birthdate = $_POST['birthdate'];
-        $email = $_POST['email'];
-        $occupation = $_POST['occupation'];
-        $phoneNumber = $_POST['phonenumber'];
-        $gender = $_POST['gender'];
-        $weight = $_POST['weight'];
-        $pulse = $_POST['pulse'];
-        $bloodPressure = $_POST['bp'];
-        $temperature = $_POST['temp'];
-        $donatedPreviously = isset($_POST['yes-or-no']) && $_POST['yes-or-no'] == 'Yes';
-        $lastDonationDate = $donatedPreviously ? $_POST['last_donation_date'] : null;
-        $donationDay = $_POST['day'];
-        $donationTime = $_POST['time'];
-
-        $stmt = $conn->prepare("INSERT INTO donors (blood_type, fname, mname, lname, house_number, street, barangay, zipcode, birthdate, email, occupation, phonenumber, gender, weight, pulse, bp, temp, donated_previously, last_donation_date, day, time)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-        // Bind parameters
-        $stmt->bind_param("ssssssssssssssssssss", $blood_type, $firstName, $middleName, $lastName, $houseNumber, $street, $barangay, $zipcode, $birthdate, $email, $occupation, $phoneNumber, $gender, $weight, $pulse, $bloodPressure, $temperature, $donatedPreviously, $lastDonationDate, $donationDay, $donationTime);
-
-        if ($stmt->execute()) {
-            echo "<script>alert('Donation Sent!'); window.location = 'homepage2.php';</script>";
-            exit();
-        } else {
-            echo "Error: " . $stmt->error;
-        }
-
-        // Close the statement
-        $stmt->close();
-    }
+if (!isset($_SESSION["userID"])) {
+  // Redirect to the login page if not logged in
+  header("Location: index.php");
+  exit;
 }
 
-// Call the function to process the form data
-processForm();
-?>
+
+    function processForm() {
+        // Include the connection variable
+        global $conn;
+
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Check if the form is submitted
+        if (isset($_POST['submit'])) {
+
+            $userID = $_SESSION["userID"];
+            // Retrieve form data
+            $blood_type = $_POST['blood_type'];
+            $firstName = $_POST['fname'];
+            $middleName = $_POST['mname'];
+            $lastName = $_POST['lname'];
+            $houseNumber = $_POST['house_number'];
+            $street = $_POST['street'];
+            $barangay = $_POST['barangay'];
+            $zipcode = $_POST['zipcode'];
+            $birthdate = $_POST['birthdate'];
+            $email = $_POST['email'];
+            $occupation = $_POST['occupation']; 
+            $phoneNumber = $_POST['phonenumber'];
+            $gender = $_POST['gender'];
+            $weight = $_POST['weight'];
+            $pulse = $_POST['pulse'];
+            $bloodPressure = $_POST['bp'];
+            $temperature = $_POST['temp'];
+            $lastDonationDate = $_POST['last_donation_date'];
+        
+           
+            $donationDay = $_POST['date'];
+            $donationTime = $_POST['time'];
+
+            $stmt = $conn->prepare("INSERT INTO donors (id, blood_type, fname, mname, lname, house_number, street, barangay, zipcode, birthdate, email, occupation, phonenumber, gender, weight, pulse, bp, temp,  last_donation_date, day, time)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+// Bind parameters
+        $stmt->bind_param("issssssssssssssssssss", $userID, $blood_type, $firstName, $middleName, $lastName, $houseNumber, $street, $barangay, $zipcode, $birthdate, $email, $occupation, $phoneNumber, $gender, $weight, $pulse, $bloodPressure, $temperature,  $lastDonationDate, $donationDay, $donationTime);
+
+            if ($stmt->execute()) {
+                echo "<script>alert('Donation Sent!'); window.location = 'homepage2.php';</script>";
+                exit();
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+
+            // Close the statement
+            $stmt->close();
+        }
+    }
+
+    // Call the function to process the form data
+    processForm();
+    ?>
 
 
 
@@ -213,34 +228,22 @@ processForm();
         </div>
             <!-- TEST -->
         <div class="donate-box">
-            <h3>Have you donated previously?</h3>
-            <div class="donate-option" class="column">
-                <div class="yes-or-no">
-                    <input  type="radio" id="Yes" name="yes-or-no" value = "Yes" />
-                    <label for="Yes">Yes</label>
-                </div>
-                <div class="yes-or-no">
-                    <input  type="radio" id="No" name="yes-or-no" value = "No" />
-                    <label for="No">No</label>
-                </div>
-            </div>
+            
             <div class="divcolumn">
                 <div class="input-box">
                 <label>When was the last time you donated blood?</label>
-                <input type="date" placeholder="Donation Date" name="last_donation_date" required>
+                <input type="date" placeholder="Donation Date" name="last_donation_date" >
             </div>
         </div>
-        <BR>
-        <label for="day">Select day to donate:</label>
-              <select id="day" name="day" class="pfday">
-              <option value="mon">Monday</option>
-              <option value="tues">Tuesday</option>
-              <option value="wed">Wednesday</option>
-              <option value="thurs">Thursday</option>
-              <option value="fri">Friday</option>
-              <option value="sat">Saturday</option>
-              <option value="sun">Sunday</option>
-              </select>
+  
+
+        <div class="input-box">
+                <label>Select date </label>
+                <input type="date" placeholder="date" name="date" required>
+            </div>
+
+        
+      
 
               <br>
               <br>

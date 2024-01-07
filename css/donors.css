@@ -197,3 +197,63 @@ td {
   text-align: center;
   padding: 10px 70px 10px 70px;
 }
+
+
+
+
+
+.view-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  background-color: rgb(46, 204, 113);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+
+  margin-bottom: 4px;
+
+  font-family: 'Poppins' ,    sans-serif;
+
+  cursor: pointer;
+
+  transition: all 0.5s ease;
+}
+
+
+
+
+
+.delete-button {
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  background-color: rgb(192, 57, 43);
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+
+  font-family: 'Poppins' ,    sans-serif;
+
+  cursor: pointer;
+
+  transition: all 0.5s ease;
+
+}
+
+
+
+.view-button:hover, .delete-button:hover , .edit-button:hover {
+
+  box-shadow:2px 2px 5px rgba(0,0,0,0.20), inset 0 0 0 99999px rgba(0,0,0,0.2);
+
+}
+
+

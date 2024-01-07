@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Execute the SQL query and handle errors
         if ($conn->query($sql) === TRUE) {
             // Construct the reset link
-            $resetLink = "http://localhost/VIRTUAL-LIFESAVERS/reset-password.php?token=$token";
+            $resetLink = "http://localhost/dashboard/VIRTUAL-LIFESAVERS/reset-password.php?token=$token";
 
             // Send the email with the reset link
             $mail = new PHPMailer(true);

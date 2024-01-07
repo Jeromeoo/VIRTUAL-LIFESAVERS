@@ -13,11 +13,6 @@ use PHPMailer\PHPMailer\Exception;
 
 
 
-
-
-
-
-
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -103,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Set OTP, its expiration time, and mark OTP as not activated in the database
                 $otpExpiration = date('Y-m-d H:i:s', strtotime('+7 days'));
 
-                $updateStmt = $conn->prepare("UPDATE users SET OTP = ?, OTP_Expiration = ?, OTP_activated = 0 WHERE user_id = ?");
+                $updateStmt = $conn->prepare("UPDATE info SET OTP = ?, OTP_Expiration = ?, OTP_activated = 0 WHERE id = ?");
                 $updateStmt->bind_param("ssi", $otp, $otpExpiration, $userId);
                 $updateStmt->execute();
                 $updateStmt->close();

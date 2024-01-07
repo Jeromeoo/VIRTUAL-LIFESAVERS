@@ -7,14 +7,33 @@ session_start();
 // Include your database connection file or establish a connection here
 include 'connection.php';
 
+
+
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $donor_id = $_POST['donor_id'];
+  $newStatus = $_POST['status'];
+
+  // Update the status in the database
+  $updateSql = "UPDATE donors SET status = '$newStatus' WHERE donor_id = '$donor_id'";
+  if ($conn->query($updateSql) === TRUE) {
+      header("Location: donors.php"); // Redirect back to your page
+      exit();
+  } else {
+      echo "Error updating status: " . $conn->error;
+  }
+}
+
+
+
+
+
 // Query to retrieve information for all users
-$sql = "SELECT i.fname, i.lname,i.phone_number, i.birth_date, i.email, i.address 
-        FROM info i";
+$sql = "SELECT i.donor_id, i.lname , i.fname , i.mname , i.email, i.blood_type, i.day, i.time, i.status
+        FROM donors i";
 
 $result = $conn->query($sql);
-
-// Check if the query was successful
-
 
 
 
@@ -83,22 +102,61 @@ $conn->close();
 <div class="container1">
   <table>
     <tr>
+    <th>Donor ID</th>
       <th>Name</th>
-      <th>Blood Type</th>
-      <th>Phone Number</th>
       <th>Email</th>
+      <th>Blood Type</th>
+
       <th>Date & Time <br>
         MM/DD/YY - HH/MM/AM-PM
       </th>
+      <th>Status</th>
+      <th>Action</th>
     
       
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+    <?php
+                if ($result && $result->num_rows > 0) {
+                    // Output data for each row
+                    while ($row = $result->fetch_assoc()) {
+                        $id = $row['donor_id'];
+                        $fname = ucwords($row['fname']);
+                        $mname = ucwords($row['mname']);
+                        $lname = ucwords($row['lname']);
+                        $email = ucwords($row['email']);
+                        $time = $row['time'];
+                        $day = $row['day'];
+                        $formatted_date = date("F j, Y", strtotime($day));
+                        $bloodtype = $row['blood_type'];
+                        $status = $row['status'];
+
+                        echo '<tr>';
+                        echo '<td>' . $id . '</td>';
+                        echo '<td>' . $fname . ' ' . $mname . ' ' . $lname . '</td>';
+                        echo '<td>' . $email . '</td>';
+                        echo '<td>' . $bloodtype . '</td>';
+                        echo '<td>' . $formatted_date . ', ' . $time . '</td>';
+                        echo '<td>' . $status . '</td>';
+                        echo "<td class='button-action'>
+                        <a href='viewdonor.php?donor_id={$row['donor_id']}' class='view-button'>View <i class='bx bxs-show'></i></a>
+                        <form action='' method='post'>
+                        <input type='hidden' name='donor_id' value='$id'>
+                        <button type='submit' name='status' class='view-button' value='Confirmed'>Accept</button>
+                        <button type='submit' name='status'  class= 'delete-button' value='Cancelled'>Cancel</button>
+                    </form>
+
+               
+              
+
+                      
+                       
+
+                    </td>";
+                        echo '</tr>';
+                    }
+                }
+                ?>
       
     </tr>
   </table>

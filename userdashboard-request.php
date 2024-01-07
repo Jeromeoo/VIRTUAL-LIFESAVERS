@@ -3,37 +3,15 @@
 session_start();
 
 include 'connection.php';
+
+
+
 if (!isset($_SESSION["userID"])) {
   // Redirect to the login page if not logged in
   header("Location: index.php");
   exit;
 }
 
-if (isset($_POST['delete_request']) && isset($_POST['request_id'])) {
-  $requestIDToDelete = $_POST['request_id'];
-
-  // Display a confirmation dialog using JavaScript
-  echo "<script>
-          var confirmDelete = confirm('Are you sure you want to delete this request?');
-          if (confirmDelete) {
-              window.location.href = 'userdashboard-request.php?delete_request=true&request_id=$requestIDToDelete';
-          }
-        </script>";
-}
-
-// Handle the deletion after the confirmation
-if (isset($_GET['delete_request']) && isset($_GET['request_id'])) {
-  $requestIDToDelete = $_GET['request_id'];
-
-  // Perform the deletion query
-  $deleteQuery = "DELETE FROM bloodrequests WHERE id = $requestIDToDelete";
-  if ($conn->query($deleteQuery) === TRUE) {
-      echo "<script>alert('Request deleted successfully!'); window.location = 'userdashboard-request.php';</script>";
-      exit();
-  } else {
-      echo "Error deleting record: " . $conn->error;
-  }
-}
 
 
 // Include your database connection file or establish a connection here
@@ -118,38 +96,41 @@ $conn->close();
 <div class="container1">
     <table>
         <tr>
-            <th>ID</th>
             <th>Name</th>
-            <th>Blood Type</th>
+            <th>Blood Type Request</th>
             <th>Phone Number</th>
             <th>Message</th>
-            <th>Action</th>
+            <th>Status</th>
+            
         </tr>
 
         <?php
         if ($result && $result->num_rows > 0) {
             // Output data for each row
             while ($row = $result->fetch_assoc()) {
-                $id = $row['id'];
-                $requesterName = $row['requester_name'];
-                $bloodType = $row['request_blood'];
-                $phoneNumber = $row['contact_number'];
-                $message = $row['message'];
-
-                echo '<tr>';
-                echo '<td>' . $id . '</td>';
-                echo '<td>' . $requesterName . '</td>';
-                echo '<td>' . $bloodType . '</td>';
-                echo '<td>' . $phoneNumber . '</td>';
-                echo '<td>' . $message . '</td>';
-                echo '<td>';
-                echo '<form method="post" action="">';
-                echo '<input type="hidden" name="request_id" value="' . $id . '">';
-                echo '<button type="submit" name="delete_request">Delete</button>';
-                echo '</form>';
-                echo '</td>';
-                echo '</tr>';
-            }
+              $id = $row['id'];
+              $requesterName = $row['requester_name'];
+              $bloodType = $row['request_blood'];
+              $phoneNumber = $row['contact_number'];
+              $message = $row['message'];
+              $status = $row ['status'];
+          
+              echo '<tr>';
+              // Exclude the line below to avoid displaying the user ID
+              // echo '<td>' . $id . '</td>';
+              echo '<td>' . $requesterName . '</td>';
+              echo '<td>' . $bloodType . '</td>';
+              echo '<td>' . $phoneNumber . '</td>';
+              echo '<td>' . $message . '</td>';
+              echo '<td>' . $status. '</td>';
+              echo '<td>';
+              echo '<form method="post" action="">';
+              echo '<input type="hidden" name="request_id" value="' . $id . '">';
+          
+              echo '</form>';
+              echo '</td>';
+              echo '</tr>';
+          }
         }
 ?>
 

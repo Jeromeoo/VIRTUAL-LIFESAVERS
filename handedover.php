@@ -1,3 +1,24 @@
+<?php 
+
+
+include 'connection.php';
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+$sql = "SELECT * FROM bloodrequests WHERE status = 'Completed'";
+$result = $conn->query($sql);
+
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,22 +82,46 @@
 <div class="container1">
   <table>
     <tr>
-      <th>Name</th>
-      <th>Blood Type</th>
-      <th>Blood Type Received</th>
-      <th>Phone Number</th>
-      <th>Email</th>
-      <th>Date & Time <br>
-        MM/DD/YY - HH/MM/AM-PM
-      </th>
+    <th>User ID</th>
+                <th>Name</th>
+                <th>Blood Type</th>
+                <th>Blood Type Requested</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Status</th>
+             
+                
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+
+      <?php if ($result->num_rows > 0) {
+    // Output data of each row
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row['id'] . "</td>";
+                echo "<td>" . $row['requester_name'] . "</td>";
+                echo "<td>" . $row['blood'] . "</td>";
+                echo "<td>" . $row['request_blood'] . "</td>";
+                echo "<td>" . $row['contact_number'] . "</td>";
+                echo "<td>" . $row['email'] . "</td>";
+                echo "<td>" . $row['status'] . "</td>";
+     
+                echo "</tr>";
+            }
+        } else {
+          echo "<tr><td colspan='7'>No records found with Confirmed Status</td></tr>";
+        
+        }
+
+    $conn->close();
+          
+          
+      
+      
+      
+      
+      ?>
+   
     </tr>
   </table>
 </div>
