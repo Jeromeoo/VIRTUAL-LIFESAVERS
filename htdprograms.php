@@ -43,6 +43,18 @@
                     <a href="userdashboard-donation.php">USER DASHBOARD</a>
                     <a href="htdprograms.php">HOW TO DONATE</a>
                     <a href="#" onclick="confirmLogout()">LOGOUT</a>
+</header>
+
+<!-- JavaScript code -->
+<script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = 'homepage.php'; // Redirect if the user confirms
+        }
+        // If the user cancels, do nothing or provide alternative actions
+    }
+</script>
 
 <!-- JavaScript code -->
 <script>

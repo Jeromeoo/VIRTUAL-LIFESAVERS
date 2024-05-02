@@ -196,9 +196,11 @@ td {
   background-color: white;
   text-align: center;
   padding: 10px 70px 10px 70px;
-<<<<<<< HEAD
 }
-=======
-}
+.export-member {
+  position: absolute;
+  bottom: -15%;
+  right: -10%;
 
->>>>>>> 4879dd1b41a564abe6b30f31592d38d14d053e63
+  padding: 16px;
+}

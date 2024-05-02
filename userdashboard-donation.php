@@ -104,7 +104,7 @@ $conn->close();
                         echo '<td>' . $bloodtype . '</td>';
                         echo '<td>' . $formatted_date . ', ' . $time . '</td>';
                         echo '<td>' . $status . '</td>';
-                        echo '<td>';
+                       
                         echo '<form method="post" action="">';
                         echo '<input type="hidden" name="donation_id" value="' . $id . '">';
                        

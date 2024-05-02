@@ -59,7 +59,19 @@ $conn->close();
 
     <link rel="stylesheet" href="css/viewdonors.css">
 </head>
+
 <body>
+<header class="site-header">
+        <div class="announcement">
+
+            <img src="css/images/Announcement-Logo.jpg" alt="">
+
+            <p>Online Blood Donation: Share, Save, Support</p>
+
+            <p></p>
+
+        </div>
+</header>
 
 <div class="container1">
 
@@ -77,15 +89,20 @@ $conn->close();
             <div class="information-view">
 
 
-                    <p class="text-view">Email : <span class="information"> <?php echo $donorDetails['email']; ?></span></p>
-                    <p class="text-view">Full Name : <span class="information"> <?php echo $donorDetails['lname'] . ', ' .$donorDetails['fname']; ?></span></p>
-                    <p class="text-view">Blood Type : <span class="information"> <?php echo $donorDetails['blood_type']; ?></span></p>
+            <p class="text-view">Email: <span class="information"> <?php echo $donorDetails['email']; ?></span></p>
+<p class="text-view">Full Name: <span class="information"> <?php echo $donorDetails['lname'] . ', ' .$donorDetails['fname']; ?></span></p>
+<p class="text-view">Blood Type: <span class="information"> <?php echo $donorDetails['blood_type']; ?></span></p>
+<p class="text-view">Gender: <span class="information"> <?php echo $donorDetails['gender']; ?></span></p>
+<p class="text-view">Occupation: <span class="information"> <?php echo $donorDetails['occupation']; ?></span></p>
+<p class="text-view">Phone Number: <span class="information"> <?php echo $donorDetails['phonenumber']; ?></span></p>
+<p class="text-view">Weight: <span class="information"> <?php echo $donorDetails['weight']; ?></span></p>
+<p class="text-view">Pulse: <span class="information"> <?php echo $donorDetails['pulse']; ?></span></p>
+<p class="text-view">Blood Pressure: <span class="information"> <?php echo $donorDetails['bp']; ?></span></p>
+<p class="text-view">Temperature: <span class="information"> <?php echo $donorDetails['temp']; ?></span></p>
+<p class="text-view">Last Donation Date: <span class="information"> <?php echo date('F j, Y', strtotime($donorDetails['last_donation_date'])); ?></span></p>
+<p class="text-view">Address: <span class="information"> <?php echo $donorDetails['house_number'] . ' ' . $donorDetails['street'] . ', ' . $donorDetails['barangay'] . ', ' . $donorDetails['zipcode']; ?></span></p>
+<p class="text-view">Birthdate: <span class="information"> <?php echo date('F j, Y', strtotime($donorDetails['birthdate'])); ?></span></p>
 
-                    <p class="text-view">Gender : <span class="information"> <?php echo $donorDetails['gender']; ?></span></p>
-
-
-                    <p class="text-view">Donation Date : <span class="information">  <?php echo date('F j, Y', strtotime($donorDetails['day'])); ?></span></p>
-                    <p class="text-view">Donation Time : <span class="information"> <?php echo $donorDetails['time']; ?></span></p>
 
 
 
@@ -93,9 +110,11 @@ $conn->close();
 
                     <p class="text-view"><span class="information"></span></p>
 
-            
+            <button class="list">
+            <a href="donors.php">Back to List of Donors</a>
+            </button>
 
-
+                   
 
 
             </div>
@@ -104,19 +123,8 @@ $conn->close();
      
 
    
-
-      
-
-
-
-
-
 </div>
-
-
-<a href="donors.php">Back to List of Donors</a>
-
-
+    
 
     
 </body>

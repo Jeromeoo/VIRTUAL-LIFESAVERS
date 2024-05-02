@@ -1,13 +1,41 @@
 <?php
 
-session_start();
+
 include 'connection.php';
+
+session_start();
 
 if (!isset($_SESSION["userID"])) {
     // Redirect to the login page if not logged in
     header("Location: index.php");
     exit;
 }
+
+
+$userID = $_SESSION["userID"]; // Get userID from the session
+
+// Fetch user information from the database
+$sql_select = "SELECT * FROM info WHERE id = ?";
+$stmt_select = $conn->prepare($sql_select);
+$stmt_select->bind_param("i", $userID);
+$stmt_select->execute();
+$result = $stmt_select->get_result();
+
+if ($result->num_rows > 0) {
+    // Fetch the user details
+    $row = $result->fetch_assoc();
+    $fname = $row["fname"];
+    $lname = $row["lname"];
+    $address = $row["address"];
+    $phone_number = $row["phone_number"];
+    $email = $row["email"];
+} else {
+    // Handle the case where user details are not found
+    echo "User details not found.";
+    exit;
+}
+
+$stmt_select->close();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fname = $_POST["fname"];
@@ -30,10 +58,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Display error message using JavaScript prompt
         echo "<script>alert('Error updating profile: " . $stmt->error . "');</script>";
     }
+
     
 
-    $stmt->close();
 }
+
+
 
 $conn->close();
 ?>
@@ -57,36 +87,32 @@ $conn->close();
 <body>
     <div class="wrapper">
         <a href="homepage2.php"><i class="fa-solid fa-arrow-left"></i></a>
-        <div class="profile-picture">
-            <img src="css/images/default-profile.jpg" alt="" class="default-profile">
-            <label for="myfile">Select a file:</label>
-  <input type="file" id="myfile" name="myfile">
-            <br>
+        
             <h2>Edit Profile</h2>
             <form method="POST" enctype='multipart/form-data'>
                 <div class="input-box">
                     <p>First Name:</p>
-                    <input class="editinput" type="text" placeholder="Enter your name" name="fname" required>
+                    <input class="editinput" type="text" placeholder="Enter your name" name="fname" value="<?php echo $fname ?>"required>
                 </div>
                 <br>
                 <div class="input-box">
                     <p>Last Name:</p>
-                    <input class="editinput" type="text" placeholder="Enter your name" name="lname" required>
+                    <input class="editinput" type="text" placeholder="Enter your name" name="lname" value="<?php echo $lname ?>" required>
                 </div>
                 <br>
                 <div class="input-box">
                     <p>Address:</p>
-                    <input class="editinput" type="text" placeholder="Enter your address" name="address" required>
+                    <input class="editinput" type="text" placeholder="Enter your address" name="address" value="<?php echo $address ?>" required>
                 </div>
                 <br>
                 <div class="input-box">
                     <p>Contact Number:</p>
-                    <input class="editinput" type="text" placeholder="Enter your contact number" name="phone_number" required>
+                    <input class="editinput" type="text" placeholder="Enter your contact number" name="phone_number"  value="<?php echo $phone_number ?>" required>
                 </div>
                 <br>
                 <div class="input-box">
                     <p>Email Address:</p>
-                    <input class="editinput" type="text" placeholder="Enter your contact number" name="email" required>
+                    <input class="editinput" type="text" placeholder="Enter your contact number" name="email" value="<?php echo $email ?>" required>
                 </div>
                 
                 <br>

@@ -123,7 +123,7 @@ $conn->close();
               echo '<td>' . $phoneNumber . '</td>';
               echo '<td>' . $message . '</td>';
               echo '<td>' . $status. '</td>';
-              echo '<td>';
+          
               echo '<form method="post" action="">';
               echo '<input type="hidden" name="request_id" value="' . $id . '">';
           

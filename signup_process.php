@@ -23,16 +23,21 @@ if (isset($_POST["Submit"])) {
             $first_name = ucfirst($first_name); // Capitalize the first name
 
             if ($password == $confpassword) {
-                // Hash the password
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                // Check if the password meets the criteria
+                if (strlen($password) >= 8 && preg_match('/[A-Z]/', $password) && preg_match('/[!@#$%^&*(),.?":{}|<>]/', $password)) {
+                    // Hash the password
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                // Insert data into the database
-                $insert_query = "INSERT INTO info (fname,lname, email, password, phone_number, address, birth_date, role) VALUES ('$first_name','$last_name', '$email', '$hashedPassword','$phone_number', '$address' ,'$birth_date' , 'user')";
-                
-                if (mysqli_query($conn, $insert_query)) {
-                    echo "<script>alert('Registered Successfully'); window.location = 'index.php';</script>";
+                    // Insert data into the database
+                    $insert_query = "INSERT INTO info (fname,lname, email, password, phone_number, address, birth_date, role) VALUES ('$first_name','$last_name', '$email', '$hashedPassword','$phone_number', '$address' ,'$birth_date' , 'user')";
+                    
+                    if (mysqli_query($conn, $insert_query)) {
+                        echo "<script>alert('Registered Successfully'); window.location = 'index.php';</script>";
+                    } else {
+                        echo "<script>alert('Registration failed. Please try again.');</script>";
+                    }
                 } else {
-                    echo "<script>alert('Registration failed. Please try again.');</script>";
+                    echo "<script>alert('Password must be at least 8 characters long, contain at least one capital letter, and one symbol.');</script>";
                 }
             } else {
                 echo "<script>alert('Password Does Not Match');</script>";
@@ -43,6 +48,7 @@ if (isset($_POST["Submit"])) {
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>

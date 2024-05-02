@@ -68,7 +68,6 @@ $conn->close();
 <ul>
             <li><a href="admin.php"><i class="fa-solid fa-house"></i>Home</a></li>         
             <li><a href="donors.php"><i class="fa-solid fa-person"></i>Donors</a></li>
-            <li><a href="blooddonations.php"><i class="fa-solid fa-droplet"></i>Blood Donations</a></li>
             <li><a href="bloodrequests.php"><i class="fa-solid fa-list"></i>Requests</a></li>
             <li><a href="handedover.php"><i class="fa-solid fa-briefcase"></i>Handed Over</a></li>
             <li><a href="users.php"><i class="fa-solid fa-user"></i>Users</a></li>

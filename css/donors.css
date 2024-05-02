@@ -257,3 +257,10 @@ td {
 }
 
 
+.export-member {
+  position: absolute;
+  bottom: -10%;
+  right: -7%;
+
+  padding: 16px;
+}

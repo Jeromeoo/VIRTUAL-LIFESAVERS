@@ -88,7 +88,7 @@ form .input-box input{
 .input-box input:focus,
 .input-box input:valid{
 border-color: rgb(133, 46, 46);
-color: white;
+color: #333;
 }
 
 .editinput {
@@ -96,7 +96,7 @@ color: white;
 }
 
 ::placeholder{
-  color: white;
+  color: #333;
 }
 
 .default-profile {
@@ -111,7 +111,12 @@ color: white;
   align-items: center;
 }
 
+form button {
+  border: none;
+}
+
 .save-btn input{
+
   appearance: button;
   backface-visibility: hidden;
   background-color: #820000;
