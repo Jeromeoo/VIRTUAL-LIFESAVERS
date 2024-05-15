@@ -40,6 +40,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blood Recipient</title>
+    <link rel="icon" href="css/images/Announcement-Logo.jpg" type="">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">

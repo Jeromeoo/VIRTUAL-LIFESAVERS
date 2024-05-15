@@ -8,6 +8,7 @@
     <title>Virtual Lifesaver | Blood Donation</title>
 
 
+    <link rel="icon" href="css/images/Announcement-Logo.jpg" type="">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
