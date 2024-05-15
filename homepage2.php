@@ -27,6 +27,7 @@ $userID = $_SESSION["userID"];
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 
@@ -56,6 +57,7 @@ $userID = $_SESSION["userID"];
 
     <ul class="nav_list2">
     <li class="nav_list-item"><a href="homepage2.php" class="nav_link2">HOME</a></li>
+    <li class="bell"><a href="user-notification"><i class="fa-solid fa-bell"></i></a></li>
             <li class="dropdown">
                 <button>MORE ↓</button>
                 <div class="content">

@@ -115,7 +115,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         
               <div class="head">
                 <h1>Welcome back, Administrator!</h1> 
-                <h2>Available Blood per group in Liters</h2>
+                <h2>Available Blood per group in Gallon</h2>
               </div> 
 
             <div class="container1">
