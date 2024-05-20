@@ -118,6 +118,18 @@ $conn->close();
                 </div>
                 
                 <br>
+                <div class="input-box">
+                    <p>New Password:</p>
+                    <input class="editinput" type="password" placeholder="Enter your new password" name="newpass" value="" required>
+
+                </div>
+                <br>
+                <div class="input-box">
+                    <p>Confirm Password:</p>
+                    <input class="editinput" type="password" placeholder="Confirm your new password" name="conpass" value="" required>
+
+                </div>
+                <br>
                 <br>
                 <button class="save-btn">
                    <input type="submit" value="Save Changes">
