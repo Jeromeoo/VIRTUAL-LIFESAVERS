@@ -47,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if new password and confirm password match
     if ($newpass !== $conpass) {
         echo "<script>alert('New password and confirm password do not match');</script>";
-        exit;
     }
 
     // Hash the new password
