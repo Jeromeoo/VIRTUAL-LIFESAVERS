@@ -1,6 +1,5 @@
 <?php
 
-
 include 'connection.php';
 
 session_start();
@@ -10,7 +9,6 @@ if (!isset($_SESSION["userID"])) {
     header("Location: index.php");
     exit;
 }
-
 
 $userID = $_SESSION["userID"]; // Get userID from the session
 
@@ -43,13 +41,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST["address"];
     $phone_number = $_POST["phone_number"];
     $email = $_POST["email"];
+    $newpass = $_POST["newpass"];
+    $conpass = $_POST["conpass"];
 
-    $userID = $_SESSION["userID"]; // Get userID from the session
+    // Check if new password and confirm password match
+    if ($newpass !== $conpass) {
+        echo "<script>alert('New password and confirm password do not match');</script>";
+        exit;
+    }
 
-    $sql = "UPDATE info SET fname='$fname', lname='$lname', address='$address', phone_number='$phone_number', email='$email' WHERE id = ?";
+    // Hash the new password
+    $hashed_password = password_hash($newpass, PASSWORD_DEFAULT);
 
+    $sql = "UPDATE info SET fname=?, lname=?, address=?, phone_number=?, email=?, password=? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $userID);
+    $stmt->bind_param("ssssssi", $fname, $lname, $address, $phone_number, $email, $hashed_password, $userID);
 
     if ($stmt->execute()) {
         // Display success message using JavaScript prompt
@@ -58,12 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Display error message using JavaScript prompt
         echo "<script>alert('Error updating profile: " . $stmt->error . "');</script>";
     }
-
-    
-
 }
-
-
 
 $conn->close();
 ?>

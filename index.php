@@ -13,6 +13,14 @@ use PHPMailer\PHPMailer\Exception;
 
 
 
+// Function to increment failed login attempts
+function incrementFailedAttempts($username, $conn) {
+    $stmt = $conn->prepare("UPDATE info SET failed_attempts = failed_attempts + 1 WHERE email = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->close();
+}
+
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -20,17 +28,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['email'];
     $password = $_POST['password'];
 
-    /// Prepare and execute the SQL statement
-        $stmt = $conn->prepare("SELECT id, email, password, Role, OTP, OTP_Expiration, OTP_activated FROM info WHERE email = ?");
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $stmt->store_result();
-
+    // Prepare and execute the SQL statement
+    $stmt = $conn->prepare("SELECT id, email, password, Role, OTP, OTP_Expiration, OTP_activated, failed_attempts FROM info WHERE email = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
 
     // Check if a user with the given username exists
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($userId, $dbUsername, $dbPassword,  $userRole, $otpFromDb, $otpExpiration, $otpActivated);
+        $stmt->bind_result($userId, $dbUsername, $dbPassword,  $userRole, $otpFromDb, $otpExpiration, $otpActivated, $failedAttempts);
+        $stmt->fetch();
 
+        // Check if the account is locked due to too many failed attempts
+        if ($failedAttempts >= 3) {
+            echo "<script>alert('Account locked due to too many failed login attempts.'); window.location.href = 'index.php';</script>";
+            exit();
+        }
 
         $stmt->fetch();
 
