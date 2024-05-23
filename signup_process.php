@@ -116,6 +116,10 @@ if (isset($_POST["Submit"])) {
         <input type="date"  name="birth_date" required>
       </div> 
     <br>
+    <div class="text">
+  <input id="checkbox" type="checkbox" required/>
+  <h3 for="checkbox"> I agree to these <a href="termsandcondition.php">Terms and Conditions</a>.</h3>
+</div>
       <div class="input-box button">
         <input type="submit" name="Submit" value="Register Now">
       </div>
