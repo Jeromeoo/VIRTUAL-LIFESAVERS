@@ -21,6 +21,15 @@ function incrementFailedAttempts($username, $conn) {
     $stmt->close();
 }
 
+// Function to insert a new record into the event_logs table
+function logLoginEvent($userId, $username, $role, $conn) {
+    $stmt = $conn->prepare("INSERT INTO event_logs (logged_on, role, User_email) VALUES (NOW(), ?, ?)");
+    $stmt->bind_param("ss", $role, $username);
+    $stmt->execute();
+    $stmt->close();
+}
+
+
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -28,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['email'];
     $password = $_POST['password'];
 
+  
     // Prepare and execute the SQL statement
     $stmt = $conn->prepare("SELECT id, email, password, Role, OTP, OTP_Expiration, OTP_activated, failed_attempts FROM info WHERE email = ?");
     $stmt->bind_param("s", $username);
@@ -54,6 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       
             $_SESSION["userID"] = $userId;
             $_SESSION['email'] = $dbUsername;
+
+
+         // Log the login event
+        logLoginEvent($userId, $dbUsername, $userRole, $conn);
+
          
                 
 
@@ -165,13 +180,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
     $conn->close();
 
-
-     // Insert event log for successful login
-     $loggedOn = date('Y-m-d H:i:s');
-     $insertStmt = $conn->prepare("INSERT INTO event_logs (Logged_On, Role, User_Email) VALUES (?, ?, ?)");
-     $insertStmt->bind_param("sss", $loggedOn, $userRole, $username);
-     $insertStmt->execute();
-     $insertStmt->close();
 
 
      $_SESSION["userID"] = $userId;

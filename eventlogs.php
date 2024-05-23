@@ -85,7 +85,7 @@ $sql = "SELECT * FROM event_logs";
         // Fetch records from the event_logs table
         $query = "SELECT * FROM event_logs";
         $result = $conn->query($query);
-
+        
         // Check if records exist
         if ($result->num_rows > 0) {
             // Loop through each row of the result set
