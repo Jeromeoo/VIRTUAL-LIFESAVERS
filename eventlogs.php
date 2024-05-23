@@ -1,3 +1,22 @@
+
+<?php 
+
+
+include 'connection.php';
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+$sql = "SELECT * FROM event_logs";
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,11 +71,37 @@
         </div>
 
         <div class="container1">
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Logged On</th>
-                    <th>Action</th>
-                    <th>Who did?</th>
-             
-                </tr>
+        <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Logged On</th>
+            <th>Role</th>
+            <th>Who did?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        // Fetch records from the event_logs table
+        $query = "SELECT * FROM event_logs";
+        $result = $conn->query($query);
+
+        // Check if records exist
+        if ($result->num_rows > 0) {
+            // Loop through each row of the result set
+            while ($row = $result->fetch_assoc()) {
+                // Output the data in each row
+                echo "<tr>";
+                echo "<td>" . $row['ID'] . "</td>";
+                echo "<td>" . $row['logged_on'] . "</td>";
+                echo "<td>" . $row['role'] . "</td>";
+                echo "<td>" . $row['User_email'] . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            // If no records found, display a message
+            echo "<tr><td colspan='4'>No records found</td></tr>";
+        }
+        ?>
+    </tbody>
+</table>
