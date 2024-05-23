@@ -72,6 +72,7 @@ $conn->close();
             <li><a href="bloodrequests.php"><i class="fa-solid fa-list"></i>Requests</a></li>
             <li><a href="handedover.php"><i class="fa-solid fa-briefcase"></i>Handed Over</a></li>
             <li><a href="users.php"><i class="fa-solid fa-user"></i>Users</a></li>
+            <li><a href="eventlogs.php"><i class="fa-solid fa-book"></i>Event Logs</a></li>
 </ul>
 </div>
 
