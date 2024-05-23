@@ -23,6 +23,7 @@ function incrementFailedAttempts($username, $conn) {
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
     // Fetch user input
     $username = $_POST['email'];
     $password = $_POST['password'];
@@ -44,21 +45,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
 
+        $stmt->fetch();
+
         // Verify the entered password against the hashed password in the database
         if (password_verify($password, $dbPassword)) {
-            // Password is correct, reset failed attempts
-            $stmt = $conn->prepare("UPDATE info SET failed_attempts = 0 WHERE email = ?");
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $stmt->close();
-            
-            // Insert event log for successful login
-            $loggedOn = date('Y-m-d H:i:s');
-            $insertStmt = $conn->prepare("INSERT INTO event_logs (Logged_On, Role, User_Email) VALUES (?, ?, ?)");
-            $insertStmt->bind_param("sss", $loggedOn, $userRole, $username);
-            $insertStmt->execute();
-            $insertStmt->close();
-
+            // Password is correct, set up a session or redirect based on the role
+            session_start();
       
             $_SESSION["userID"] = $userId;
             $_SESSION['email'] = $dbUsername;
@@ -172,6 +164,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Close the statement and database connection
     $stmt->close();
     $conn->close();
+
+
+     // Insert event log for successful login
+     $loggedOn = date('Y-m-d H:i:s');
+     $insertStmt = $conn->prepare("INSERT INTO event_logs (Logged_On, Role, User_Email) VALUES (?, ?, ?)");
+     $insertStmt->bind_param("sss", $loggedOn, $userRole, $username);
+     $insertStmt->execute();
+     $insertStmt->close();
+
+
+     $_SESSION["userID"] = $userId;
+     $_SESSION['email'] = $dbUsername;
+  
 }
 
 ?>
