@@ -58,7 +58,8 @@ $userID = $_SESSION["userID"];
 
     <ul class="nav_list2">
     <li class="nav_list-item"><a href="homepage2.php" class="nav_link2">HOME</a></li>
-    <li class="bell"><a href="user-notification"><i class="fa-solid fa-bell"></i></a></li>
+    <li class="dropdown">
+    <button><i class="fa-solid fa-bell"></i>&nbsp;&nbsp;Notification ↓</button>
             <li class="dropdown">
                 <button>MORE ↓</button>
                 <div class="content">

@@ -1,5 +1,4 @@
 <?php
-
 include 'connection.php';
 
 session_start();
@@ -27,6 +26,7 @@ if ($result->num_rows > 0) {
     $address = $row["address"];
     $phone_number = $row["phone_number"];
     $email = $row["email"];
+    $currentPassword = $row["password"]; // Get the current password
 } else {
     // Handle the case where user details are not found
     echo "User details not found.";
@@ -47,27 +47,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if new password and confirm password match
     if ($newpass !== $conpass) {
         echo "<script>alert('New password and confirm password do not match');</script>";
-    }
-
-    // Hash the new password
-    $hashed_password = password_hash($newpass, PASSWORD_DEFAULT);
-
-    $sql = "UPDATE info SET fname=?, lname=?, address=?, phone_number=?, email=?, password=? WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssi", $fname, $lname, $address, $phone_number, $email, $hashed_password, $userID);
-
-    if ($stmt->execute()) {
-        // Display success message using JavaScript prompt
-        echo "<script>alert('Profile updated successfully'); window.location.href = 'homepage2.php';</script>";
+    } elseif (password_verify($newpass, $currentPassword)) {
+        // Check if the new password is the same as the current password
+        echo "<script>alert('The new password cannot be the same as the current password');</script>";
     } else {
-        // Display error message using JavaScript prompt
-        echo "<script>alert('Error updating profile: " . $stmt->error . "');</script>";
+        // Hash the new password
+        $hashed_password = password_hash($newpass, PASSWORD_DEFAULT);
+
+        $sql = "UPDATE info SET fname=?, lname=?, address=?, phone_number=?, email=?, password=? WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssssi", $fname, $lname, $address, $phone_number, $email, $hashed_password, $userID);
+
+        if ($stmt->execute()) {
+            // Display success message using JavaScript prompt
+            echo "<script>alert('Profile updated successfully'); window.location.href = 'homepage2.php';</script>";
+        } else {
+            // Display error message using JavaScript prompt
+            echo "<script>alert('Error updating profile: " . $stmt->error . "');</script>";
+        }
     }
 }
 
 $conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html>

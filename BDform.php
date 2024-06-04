@@ -1,76 +1,107 @@
-    <?php
-    include 'connection.php';
-    
+<?php
+include 'connection.php';
 
-    // Start the session
+// Start the session
 session_start();
 
-
 if (!isset($_SESSION["userID"])) {
-  // Redirect to the login page if not logged in
-  header("Location: index.php");
-  exit;
+    // Redirect to the login page if not logged in
+    header("Location: index.php");
+    exit;
 }
 
+function processForm() {
+    // Include the connection variable
+    global $conn;
 
-    function processForm() {
-        // Include the connection variable
-        global $conn;
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Check if the form is submitted
-        if (isset($_POST['submit'])) {
-
-            $userID = $_SESSION["userID"];
-            // Retrieve form data
-            $blood_type = $_POST['blood_type'];
-            $firstName = $_POST['fname'];
-            $middleName = $_POST['mname'];
-            $lastName = $_POST['lname'];
-            $houseNumber = $_POST['house_number'];
-            $street = $_POST['street'];
-            $barangay = $_POST['barangay'];
-            $zipcode = $_POST['zipcode'];
-            $birthdate = $_POST['birthdate'];
-            $email = $_POST['email'];
-            $occupation = $_POST['occupation']; 
-            $phoneNumber = $_POST['phonenumber'];
-            $gender = $_POST['gender'];
-            $weight = $_POST['weight'];
-            $pulse = $_POST['pulse'];
-            $bloodPressure = $_POST['bp'];
-            $temperature = $_POST['temp'];
-            $lastDonationDate = $_POST['last_donation_date'];
-        
-           
-            $donationDay = $_POST['date'];
-            $donationTime = $_POST['time'];
-
-            $stmt = $conn->prepare("INSERT INTO donors (id, blood_type, fname, mname, lname, house_number, street, barangay, zipcode, birthdate, email, occupation, phonenumber, gender, weight, pulse, bp, temp,  last_donation_date, day, time)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-// Bind parameters
-        $stmt->bind_param("issssssssssssssssssss", $userID, $blood_type, $firstName, $middleName, $lastName, $houseNumber, $street, $barangay, $zipcode, $birthdate, $email, $occupation, $phoneNumber, $gender, $weight, $pulse, $bloodPressure, $temperature,  $lastDonationDate, $donationDay, $donationTime);
-
-            if ($stmt->execute()) {
-                echo "<script>alert('Donation Sent!'); window.location = 'homepage2.php';</script>";
-                exit();
-            } else {
-                echo "Error: " . $stmt->error;
-            }
-
-            // Close the statement
-            $stmt->close();
-        }
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
-    // Call the function to process the form data
-    processForm();
-    ?>
+    // Check if the form is submitted
+    if (isset($_POST['submit'])) {
+        $userID = $_SESSION["userID"];
+        // Retrieve form data
+        $blood_type = $_POST['blood_type'];
+        $firstName = $_POST['fname'];
+        $middleName = $_POST['mname'];
+        $lastName = $_POST['lname'];
+        $houseNumber = $_POST['house_number'];
+        $street = $_POST['street'];
+        $barangay = $_POST['barangay'];
+        $zipcode = $_POST['zipcode'];
+        $birthdate = $_POST['birthdate'];
+        $email = $_POST['email'];
+        $occupation = $_POST['occupation'];
+        $phoneNumber = $_POST['phonenumber'];
+        $gender = $_POST['gender'];
+        $weight = $_POST['weight'];
+        $pulse = $_POST['pulse'];
+        $bloodPressure = $_POST['bp'];
+        $temperature = $_POST['temp'];
+        $lastDonationDate = $_POST['last_donation_date'];
+        $donationDay = $_POST['date'];
+        $donationTime = $_POST['time'];
+
+        // Calculate age from birthdate
+        $age = date_diff(date_create($birthdate), date_create('today'))->y;
+
+        // Check if the donor meets the age requirement
+        if ($age < 17 || $age > 65) {
+            echo "<script>alert('You do not meet the age requirement for blood donation.');</script>";
+            return;
+        }
+
+        // Check if the donor meets the weight requirement
+        if ($weight < 110) {
+            echo "<script>alert('You do not meet the weight requirement for blood donation.');</script>";
+            return;
+        }
+
+        // Check if the blood pressure and temperature are within acceptable ranges
+        // You can modify these ranges based on your specific requirements
+        if ($bloodPressure < 90 || $bloodPressure > 180) {
+            echo "<script>alert('Your blood pressure is not within the acceptable range for blood donation.');</script>";
+            return;
+        }
+
+        if ($temperature < 97 || $temperature > 99.5) {
+            echo "<script>alert('Your temperature is not within the acceptable range for blood donation.');</script>";
+            return;
+        }
+
+        // Check if the donor has donated blood within the waiting period
+        // Assuming a waiting period of 8 weeks (56 days)
+        $waitingPeriod = strtotime("-56 days");
+        $lastDonationDateTimestamp = strtotime($lastDonationDate);
+        if ($lastDonationDateTimestamp >= $waitingPeriod) {
+            echo "<script>alert('You have donated blood recently. Please wait for the required waiting period before donating again.');</script>";
+            return;
+        }
+
+        // If all requirements are met, proceed with the donation
+        $stmt = $conn->prepare("INSERT INTO donors (id, blood_type, fname, mname, lname, house_number, street, barangay, zipcode, birthdate, email, occupation, phonenumber, gender, weight, pulse, bp, temp, last_donation_date, day, time)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+        // Bind parameters
+        $stmt->bind_param("issssssssssssssssssss", $userID, $blood_type, $firstName, $middleName, $lastName, $houseNumber, $street, $barangay, $zipcode, $birthdate, $email, $occupation, $phoneNumber, $gender, $weight, $pulse, $bloodPressure, $temperature, $lastDonationDate, $donationDay, $donationTime);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Donation Sent!'); window.location = 'homepage2.php';</script>";
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+
+        // Close the statement
+        $stmt->close();
+    }
+}
+
+// Call the function to process the form data
+processForm();
+?>
 
 
 

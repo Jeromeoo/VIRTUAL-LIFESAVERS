@@ -13,6 +13,9 @@ use PHPMailer\PHPMailer\Exception;
 
 
 
+// Get the time when the password was last updated
+
+
 // Function to increment failed login attempts
 function incrementFailedAttempts($username, $conn) {
     $stmt = $conn->prepare("UPDATE info SET failed_attempts = failed_attempts + 1 WHERE email = ?");
@@ -29,6 +32,14 @@ function logLoginEvent($userId, $username, $role, $conn) {
     $stmt->close();
 }
 
+// Function to lock the user account
+function lockAccount($username, $conn) {
+    $stmt = $conn->prepare("UPDATE info SET account_locked = 1 WHERE email = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->close();
+}
+
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -39,27 +50,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   
     // Prepare and execute the SQL statement
-    $stmt = $conn->prepare("SELECT id, email, password, Role, OTP, OTP_Expiration, OTP_activated, failed_attempts FROM info WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, email, password, Role, OTP, OTP_Expiration, OTP_activated, failed_attempts,account_locked FROM info WHERE email = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
 
     // Check if a user with the given username exists
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($userId, $dbUsername, $dbPassword,  $userRole, $otpFromDb, $otpExpiration, $otpActivated, $failedAttempts);
+
+        $stmt->bind_result($userId, $dbUsername, $dbPassword,  $userRole, $otpFromDb, $otpExpiration, $otpActivated, $failedAttempts, $accountLocked);
+        $stmt->fetch();
+    
+
         $stmt->fetch();
 
-        // Check if the account is locked due to too many failed attempts
-        if ($failedAttempts >= 3) {
-            echo "<script>alert('Account locked due to too many failed login attempts.'); window.location.href = 'index.php';</script>";
-            exit();
+        if ($accountLocked) {
+            echo "<script>alert('Your account has been locked due to multiple failed login attempts. Please contact support'); window.location.href = 'forgot.php';</script>";
+            exit;
         }
 
-        $stmt->fetch();
-
+       
         // Verify the entered password against the hashed password in the database
-        if (password_verify($password, $dbPassword)) {
-            // Password is correct, set up a session or redirect based on the role
+     if (password_verify($password, $dbPassword)) {
+
+        $passwordUpdatedAt = strtotime($dbPasswordUpdatedAt);
+        // Get the current time
+        $currentTime = time();
+        
+        if ($hoursDifference > 1) {
+       
+         echo "<script>alert('Your password has expired. Please reset your password..'); window.location.href = 'forgot.php';</script>";
+         // You can also redirect the user to a password reset page or provide a link/form to reset the password
+        } 
+
+
+                // Password is correct, reset failed attempts, set up a session, or redirect based on the role
+                $stmt = $conn->prepare("UPDATE info SET failed_attempts = 0 WHERE email = ?");
+                $stmt->bind_param("s", $username);
+                $stmt->execute();
+                $stmt->close();
+
             session_start();
       
             $_SESSION["userID"] = $userId;
@@ -167,13 +197,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "<script>alert('User login successfully'); window.location.href = 'homepage2.php';</script>";
             }
             exit();
-        } else {
-            // Password is incorrect
-            echo "<script>alert('Incorrect password. Please try again.');</script>";
-        }
+        } 
+        
+        else {
+            // Password is incorrect, increment failed attempts
+            incrementFailedAttempts($username, $conn);
+            
+            // Check if failed attempts have reached 3
+            if ($failedAttempts + 1 >= 3) {
+                lockAccount($username, $conn);
+               
+                echo "<script>alert('Your account has been locked due to multiple failed login attempts. Please contact support'); window.location.href = 'forgot.php';</script>";
+            } else {
+           
+                echo "<script>alert('Incorrect password. You have " . (2 - $failedAttempts) . " attempts left.'); window.location.href = 'index.php';</script>";
+            }
+            
+        
+    }
+    
     } else {
         // User with the given username does not exist
-        echo "<script>alert('User not found. Please check your username.');</script>";
+        
+        echo "<script>alert('User not found. Please check you email'); window.location.href = 'index.php';</script>";
     }
 
     // Close the statement and database connection
@@ -246,7 +292,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
 </body>
 </html>
-
-
-
-
