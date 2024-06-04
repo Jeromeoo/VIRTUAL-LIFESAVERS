@@ -77,6 +77,7 @@ $sql = "SELECT * FROM event_logs";
             <th>ID</th>
             <th>Logged On</th>
             <th>Role</th>
+            <th>Log attempts</th>
             <th>Who did?</th>
         </tr>
     </thead>
