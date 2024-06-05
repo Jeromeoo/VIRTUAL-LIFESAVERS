@@ -1,20 +1,22 @@
-
-<?php 
-
-
+<?php
 include 'connection.php';
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Update the login_status to 'success' for specific conditions
+$update_query = "UPDATE event_logs SET login_status = 'success' WHERE login_attempts < 3";
+if ($conn->query($update_query) === TRUE) {
+    echo "Records updated successfully.<br>";
+} else {
+    echo "Error updating records: " . $conn->error;
+}
 
-$sql = "SELECT * FROM event_logs";
-
-
-
+// Fetch records from the event_logs table
+$select_query = "SELECT * FROM event_logs";
+$result = $conn->query($select_query);
 ?>
-
 
 
 <!DOCTYPE html>
@@ -71,12 +73,14 @@ $sql = "SELECT * FROM event_logs";
         </div>
 
         <div class="container1">
-        <table>
+
+    <table>
     <thead>
         <tr>
             <th>ID</th>
             <th>Logged On</th>
             <th>Role</th>
+            <th>Log attempts</th>
             <th>Who did?</th>
         </tr>
     </thead>
@@ -85,23 +89,31 @@ $sql = "SELECT * FROM event_logs";
         // Fetch records from the event_logs table
         $query = "SELECT * FROM event_logs";
         $result = $conn->query($query);
-        
+
         // Check if records exist
         if ($result->num_rows > 0) {
             // Loop through each row of the result set
             while ($row = $result->fetch_assoc()) {
-                // Output the data in each row
                 echo "<tr>";
                 echo "<td>" . $row['ID'] . "</td>";
                 echo "<td>" . $row['logged_on'] . "</td>";
                 echo "<td>" . $row['role'] . "</td>";
+
+                // Check login status and display "successful" if applicable
+                if ($row['login_status'] == 'success') {
+                    echo "<td>Successful</td>";
+                } else {
+                    echo "<td>" . $row['login_attempts'] . "</td>";
+                }
+
                 echo "<td>" . $row['User_email'] . "</td>";
                 echo "</tr>";
             }
         } else {
             // If no records found, display a message
-            echo "<tr><td colspan='4'>No records found</td></tr>";
+            echo "<tr><td colspan='5'>No records found</td></tr>";
         }
         ?>
     </tbody>
 </table>
+
